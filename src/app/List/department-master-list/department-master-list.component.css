@@ -1,0 +1,22 @@
+.edit{
+    
+    background-color: blue !important;
+}
+.delete{
+  
+  background-color: red !important;
+}
+.view{
+  
+  background-color: green !important;
+}
+button{
+    margin-left: 5px;
+    padding: 3px;
+}
+th{
+    text-align: center;
+}
+td{
+    text-align: center;
+}

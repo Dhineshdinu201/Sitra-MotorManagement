@@ -1,0 +1,149 @@
+<h4>MOTOR NAME PLATE LIST</h4>
+<div style="border: 1px solid #DDD;">
+  <img style="height:30px;width:30px;" src="assets/search.png" />
+  <input type="text" style="width:80%;border:none; padding:8px;" #input placeholder="Search....." (keyup)="onKey($event, input.value)" />
+  <button style="width: 100px;margin: 10px;padding: 8px;" (click)="Add()">Add</button>
+</div>
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Make</th>
+      <th>
+        Frame Size
+      </th>
+      <th>
+        Capacity (kW)
+      </th>
+      <th>
+        Sr. no.
+      </th>
+      <th>
+        Voltage (volts)
+      </th>
+      <th>
+        Model no.
+      </th>
+      <th>
+        Current (amps)
+      </th>
+      <th>
+        Type of cooling
+      </th>
+      <th>
+        Frequency (Hz)
+      </th>
+      <!--<th>
+        Class of insulation
+      </th>
+      <th>
+        pf
+      </th>
+      <th>
+        Ingress protection  class
+      </th>
+      <th>
+        Efficiency - η %
+      </th>
+      <th>
+        duty cycle
+      </th>
+      <th>
+        Date and year of manufacture
+      </th>
+      <th>
+        weight kg
+      </th>
+      <th>
+        bearing details
+      </th>
+      <th>
+        Motor QR Code
+      </th>
+      <th>
+        HP
+      </th>
+      <th>
+        kW
+      </th>
+      <th>
+        AC/DC
+      </th>
+      <th>
+        Three Phase / Single Phase
+      </th>
+      <th>
+        Type of motor (Induction / SERVO / PMMC / SR)
+      </th>
+      <th>
+        Service factor
+      </th>
+      <th>
+        Efficiency class - (IE3 / IE4 / IE5)
+      </th>
+      <th>
+        IP Class
+      </th>
+      <th>
+        NBE
+      </th>
+      <th>
+        VFD driven (Y/N)
+      </th>-->
+      <th>Status</th>
+      <th>Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of jsonData| filter:searchText| paginate: { itemsPerPage: 6, currentPage: p} let i = index ">
+      <td>{{d.Motor_Id}}</td>
+      <td>{{d.Motor_Name}}</td>
+      <td>{{d.Frame_Size}}</td>
+      <td>{{d.Capacity}}</td>
+      <td>{{d.Serial_No}}</td>
+      <td>{{d.Voltage}}</td>
+      <td>{{d.Model_No}}</td>
+      <td>{{d.Current}}</td>
+      <td>{{d.Type_of_Cooling}}</td>
+      <td>{{d.Frequency}}</td>
+      <!--<td>{{d.Insulation_Class}}</td>
+  <td>{{d.Pf}}</td>-->
+      <!--<td>{{d.Ingress_Protection_Class}}</td>
+  <td>{{d.Efficiency}}</td>
+  <td>{{d.Duty_Cycle}}</td>
+  <td>{{d.Manufacture_Date}}</td>
+  <td>{{d.Weight}}</td>
+  <td>{{d.Bearing_Det}}</td>
+  <td>{{d.Motor_QR_Code}}</td>
+  <td>{{d.HP}}</td>
+  <td>{{d.kW}}</td>
+  <td>{{d.AC_DC}}</td>
+  <td>{{d.Phase}}</td>
+  <td>{{d.Type_of_motor}}</td>
+  <td>{{d.service_factor}}</td>
+  <td>{{d.Efficiency_class}}</td>
+  <td>{{d.IP_class}}</td>
+  <td>{{d.NBE}}</td>
+  <td>{{d.VFD}}</td>-->
+      <td>{{d.status}}</td>
+
+      <td>
+        <div class="btn-group">
+          <img style="widows:25px;height:25px; margin-top:10px; float:right; text-align:left" src='assets/edit.png' (click)="Edit(d)">
+          <img style="widows:25px;height:25px; margin-top:10px; float:right; text-align:left" src='assets/delete.png' (click)="openModal(template,i,d)">
+          <img style="widows:25px;height:25px; margin-top:10px; float:right; text-align:left" src='assets/view.png' (click)="View(d)">
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Do you want to Delete?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()">Yes</button>
+  </div>
+</ng-template>

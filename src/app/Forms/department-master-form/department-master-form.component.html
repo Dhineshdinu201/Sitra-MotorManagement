@@ -1,0 +1,37 @@
+<form [formGroup]="masterDataForm" (ngSubmit)="saveMasterData(masterDataForm.value)" style="margin: 10px;">
+  <h4>
+    Department
+  </h4>
+  <p>*press ESC to Back</p>
+  <!-- <label>
+      Department Code:
+  </label>
+      <input type="number" formControlName="Dept_code">
+     <br> -->
+  <!-- <label>
+      Customer Id:
+  </label>
+      <input type="text" class="form-control" formControlName="custid" [ngClass]="{ 'is-invalid': submitted && f.custid.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.custid.errors">Required</div>
+    <br> -->
+  <label>
+    Department:
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.Dept_Name" formControlName="Dept_Name" [ngClass]="{ 'is-invalid': submitted && f.Dept_Name.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.Dept_Name.errors">Required</div>
+  <br>
+  <label>
+    Short Name:
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.Dept_Shrt_Name" formControlName="Dept_Shrt_Name" [ngClass]="{ 'is-invalid': submitted && f.Dept_Shrt_Name.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.Dept_Shrt_Name.errors">Required</div>
+  <br />
+  <!--<label>
+      Status:
+  </label><br/>
+  <input id="active" type="radio" formControlName="status" name="status" value="active" [ngClass]="{ 'is-invalid': submitted && f.status.errors }"> Active
+  <input id="inactive"type="radio" formControlName="status" name="status" value="inactive"[ngClass]="{ 'is-invalid': submitted && f.status.errors }"> InActive<br>-->
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>

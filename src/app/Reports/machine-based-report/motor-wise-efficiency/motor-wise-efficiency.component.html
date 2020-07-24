@@ -1,0 +1,28 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Motor Name</th>
+      <th>Driving Part</th>
+      <th>Department</th>
+      <th>Date of Failure</th>
+      <th>Reason</th>
+      <th>Remarks</th>
+      <th>Date of re-installation</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of jsonData">
+      <td>{{d.Motor_Name}}</td>
+
+      <td>{{d.driving_part}}</td>
+      <td>{{d.Dept_Name}}</td>
+      <td>{{d.date_of_failure}}</td>
+      <td>{{d.reason_id}}</td>
+      <td>{{d.remarks}}</td>
+      <td>{{d.date_of_re_installation}}</td>
+
+
+    </tr>
+  </tbody>
+</table>

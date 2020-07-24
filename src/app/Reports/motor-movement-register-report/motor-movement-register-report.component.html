@@ -1,0 +1,60 @@
+<br />
+<br />
+<div style="margin-left:100px;">
+  <h5>MOTOR MOVEMENT REGISTER REPORT</h5>
+  <br />
+  <label>
+    From Date:
+  </label>
+  <input type="date" [(ngModel)]="fromDate">
+
+  <label style="margin-left:100px;">
+    To Date:
+  </label>
+  <input type="date" [(ngModel)]="toDate">
+  <br />
+  <br />
+  <button style="width:300px;" (click)="submit()">submit</button>
+</div>
+<br />
+<br />
+<table class="table table-bordered" *ngIf="isSubmitted">
+  <thead>
+    <tr>
+      <th>
+        Motor
+      </th>
+      <th>Mac</th>
+      <th>
+        Driving Part
+      </th>
+      <th>
+        Date of change
+      </th>
+      <th>
+        Type
+      </th>
+      <th>
+        Reason
+      </th>
+      <th>
+        From Machine
+      </th>
+      <th>
+        To Machine
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of jsonData">
+      <td>{{d.Motor_Name}}</td>
+      <td>{{d.Mac_Name}}</td>
+      <td>{{d.driving_part}}</td>
+      <td>{{d.mov_date}}</td>
+      <td>{{d.mov_type}}</td>
+      <td>{{d.mov_reason}}</td>
+      <td>{{d.from_machine}}</td>
+      <td>{{d.to_machine}}</td>
+    </tr>
+  </tbody>
+</table>

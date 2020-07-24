@@ -1,0 +1,115 @@
+<!-- <h1>MOTOR DETAILS</h1>
+<input type="text" #input class="form-control" placeholder="Search....." (keyup)="onKey($event, input.value)">
+<div style="text-align: end;">
+  <button style="width: 100px;margin: 10px;padding: 8px;"(click)="Add()">Add</button>
+</div>
+
+
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Motor Details Id</th>
+        <th>Motor Id</th>
+        <th>Motor Modification Number</th>
+        <th>Machine Connected / Stock</th>
+        <th>Serving Section</th>
+        <th>Connected Machine</th>
+        <th>Driving Part/System</th>
+        <th>Motor Clasification</th>
+        <th>Motor-machine coupling</th>
+        <th>Reason Behind the purchase</th>
+        <th>Purchase Date,month,year</th>
+        <th>Status</th>
+        <th>Action</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor ="let d of jsonData| filter:searchText| paginate: { itemsPerPage: 6, currentPage: p} let i = index ">
+        <td>{{d.value1}}</td>
+        <td>{{d.value2}}</td>
+        <td>{{d.value3}}</td>
+        <td>{{d.value4}}</td>
+        <td>{{d.value5}}</td>
+        <td>{{d.value6}}</td>
+        <td>{{d.value7}}</td>
+        <td>{{d.value8}}</td>
+        <td>{{d.value9}}</td>
+        <td>{{d.value10}}</td>
+        <td>{{d.value11}}</td>
+        <td>{{d.value12}}</td>
+        <td><div class="btn-group">
+            <button class="edit" (click)="Edit()">Edit</button>
+            <button class="delete" (click)="openModal(template,i)">Delete</button>
+            <button class="view" (click)="View()">View</button>
+        </div></td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <ng-template #template>
+    <div class="modal-body text-center">
+      <p>Do you want to Delete?</p>
+      <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+      <button type="button" class="btn btn-primary" (click)="openModal(template)" >No</button>
+    </div>
+  </ng-template> -->
+  <div>
+    <div class="head">
+      <h4>DEPARTMENT</h4>
+
+    </div>
+    <div>
+      <div style="border: 1px solid #DDD;">
+        <img style="height:30px;width:30px;" src="assets/search.png" />
+        <input type="text" style="width:80%;border:none; padding:8px;" #input placeholder="Search....." (keyup)="onKey($event, input.value)" />
+        <button style="width: 100px;margin: 10px;padding: 8px;" (click)="Add()">Add</button>
+      </div>
+
+
+
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th style="width:5%">ID</th>
+          <th style="width:45%">Department</th>
+          <th style="width:30%">Short Name</th>
+          <th style="width:10%">Status</th>
+
+          <th style="width:10%">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of jsonData| filter:searchText| paginate: { itemsPerPage: 6, currentPage: p} let i = index ">
+          <td>{{d.Dept_Code}}</td>
+          <td style="text-align:left">{{d.Dept_Name}}</td>
+          <td>{{d.Dept_Shrt_Name}}</td>
+          <td>{{d.Status}}</td>
+
+          <td>
+            <div class="btn-group">
+              <div (click)="Edit(d)">
+                <img style="width:25px;height:25px; margin-top:10px; float:right; text-align:left" src='assets/edit.png'>
+              </div>
+              <img style="width:25px;height:25px; margin-top:10px; float:right; text-align:left" src='assets/delete.png' (click)="openModal(template,i,d)">
+              <img style="width:25px;height:25px; margin-top:10px; float:right; text-align:left" src='assets/view.png' (click)="View(d)">
+
+              <!--<button class="edit" (click)="Edit()">Edit</button>
+              <button class="delete" (click)="openModal(template,i,d)">Delete</button>
+              <button class="view" (click)="View(d)">View</button>-->
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+  <ng-template #template>
+    <div class="modal-body text-center">
+      <p>Do you want to Delete?</p>
+      <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+
+    </div>
+  </ng-template>

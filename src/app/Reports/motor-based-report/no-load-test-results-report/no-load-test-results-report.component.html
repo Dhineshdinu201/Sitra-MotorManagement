@@ -1,0 +1,44 @@
+<input type="text" #input class="form-control" placeholder="Search....." (keyup)="onKey($event, input.value)">
+<br />
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      
+      <th>
+        Motor
+      </th>
+      <th>
+         Mac
+      </th>
+
+      <th>
+        R
+      </th>
+      <th>
+        Y
+      </th>
+      <th>
+        B
+      </th>
+      <th>
+        Tested on
+      </th>
+      
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of jsonData| filter:searchText| paginate: { itemsPerPage: 6, currentPage: p} let i = index ">
+
+      <td>{{d.Motor_Name}}</td>
+      <td>{{d.Mac_Name}}</td>
+      <td>{{d.R}}</td>
+      <td>{{d.Y}}</td>
+      <td>{{d.B}}</td>
+      <td>{{d.tested_on}}</td>
+
+
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

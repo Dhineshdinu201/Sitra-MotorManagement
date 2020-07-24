@@ -1,0 +1,77 @@
+.vertical-menu {
+    width: 80%;
+   text-align:left!important;
+  }
+.vertical-menu button {
+ 
+  float:left !important;
+  text-align: left !important;
+}
+  .vertical-menu a {
+    background-color: #eee;
+    color: white;
+    display: block;
+    padding: 10px;
+    
+    margin-left: 8px;
+    text-decoration: none;
+  }
+.menu {
+  color: white;
+  padding-left: 70px;
+  padding-top:12px;
+  width:100%;
+  float:right;
+  opacity:0.9;
+}
+.Headermenu {
+  color: white;
+  padding-left:35px;
+
+  padding-top: 12px;
+  text-decoration:none;
+  cursor:pointer;
+  width: 100%;
+  text-align:left !important;
+  float: left;
+  opacity: 0.9 !important;
+}
+  .Headermenu :hover {
+    opacity: 0.7 !important;
+  }
+  button{
+    width:100%
+}
+  .highlight{ background-color: green }
+.normalState {
+  background-color: #eee;
+}
+.acButton {
+  background-color: #000000 !important;
+}
+.panel-heading card-header panel-enabled {
+  background-color: black !important;
+}
+  .vertical-menu a:hover {
+  background-color: #ffffff;
+}
+  img{
+      float:right;
+  }
+.menuHeader {
+  color: white;
+  display: block;
+  padding: 0px;
+  width: 100%;
+  float: left;
+  text-align: left;
+  text-decoration: none;
+}
+  
+  .vertical-menu a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .menu:hover {
+    opacity: 0.8;
+  }

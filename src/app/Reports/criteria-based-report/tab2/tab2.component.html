@@ -1,0 +1,32 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>
+        Deparment Name
+      </th>
+      <th>
+        Machine Name
+      </th>
+
+      <th>
+        Motor
+      </th>
+      <th>
+        Driving Part
+      </th>
+      <th>
+       Number Of Failure
+      </th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of jsonData ">
+      <td>{{d.Dept_Name}}</td>
+      <td>{{d.Mac_Name}}</td>
+      <td>{{d.Motor_Name}}</td>
+      <td>{{d.driving_part}}</td>
+      <td>{{d.num_failure}}</td>
+    </tr>
+  </tbody>
+</table>

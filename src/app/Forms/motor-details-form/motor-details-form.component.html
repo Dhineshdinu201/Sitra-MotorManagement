@@ -1,0 +1,85 @@
+<form [formGroup]="masterDataForm" (ngSubmit)="saveMasterData(masterDataForm.value)" style="margin: 10px;">
+  <h4>
+    Motor Details
+  </h4>
+  <p>*press ESC to Back</p>
+  <label>
+    Motor Id:
+  </label>
+  <div>
+    <select formControlName="Motor_Id">
+
+      <option *ngFor="let d of jsonData" [ngValue]="d.Motor_Id">{{d.Motor_Name}}</option>
+    </select>
+    <div style="color: red; text-align: center;" *ngIf="submitted &&f.Motor_Id.errors">Required</div>
+  </div>
+  <br />
+
+  <label>
+    Motor identification number (to be created by mill):
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.Motor_number" formControlName="Motor_number" [ngClass]="{ 'is-invalid': submitted && f.Motor_number.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.Motor_number.errors">Required</div>
+  <br>
+  <label>
+    Machine Connected / Stock:
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.macconnected_stock" formControlName="macconnected_stock" [ngClass]="{ 'is-invalid': submitted && f.macconnected_stock.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.macconnected_stock.errors">Required</div>
+  <br />
+  <label>
+    Serving section:
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.serving_section" formControlName="serving_section" [ngClass]="{ 'is-invalid': submitted && f.serving_section.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.serving_section.errors">Required</div>
+  <br />
+
+  <label>
+    Connected machine:
+  </label>
+  <div>
+    <select formControlName="connected_machine">
+
+      <option *ngFor="let d of jsonData2" [ngValue]="d.Mac_Id">{{d.Mac_Name}}</option>
+    </select>
+    <div style="color: red; text-align: center;" *ngIf="submitted &&f.connected_machine.errors">Required</div>
+  </div>
+  <br>
+
+  <label>
+    Driving part / system:
+  </label>
+  <div>
+    <select formControlName="driving_part">
+
+      <option *ngFor="let d of jsonData3" [ngValue]="d.Make_Code">{{d.Make_Name}}</option>
+    </select>
+    <div style="color: red; text-align: center;" *ngIf="submitted &&f.driving_part.errors">Required</div>
+  </div>
+  <br>
+  <label>
+    Motor classification:
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.motor_classification" formControlName="motor_classification" [ngClass]="{ 'is-invalid': submitted && f.motor_classification.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.motor_classification.errors">Required</div>
+  <br>
+  <label>
+    Motor-machine coupling:
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.motor_mac_coupling" formControlName="motor_mac_coupling" [ngClass]="{ 'is-invalid': submitted && f.motor_mac_coupling.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.motor_mac_coupling.errors">Required</div>
+  <br />
+  <label>
+    The reason behind the purchase:
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.purchase_reason" formControlName="purchase_reason" [ngClass]="{ 'is-invalid': submitted && f.purchase_reason.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.purchase_reason.errors">Required</div>
+  <br />
+  <label>
+    Purchase date, month, year:
+  </label>
+  <input type="date" class="form-control" [(ngModel)]="Data.purchase_date" formControlName="purchase_date" [ngClass]="{ 'is-invalid': submitted && f.purchase_date.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.purchase_date.errors">Required</div>
+  <br>
+  <button type="submit">Submit</button>
+</form>

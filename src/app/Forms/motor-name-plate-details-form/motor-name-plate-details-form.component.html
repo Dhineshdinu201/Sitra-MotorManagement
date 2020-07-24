@@ -1,0 +1,262 @@
+<form [formGroup]="masterDataForm" (ngSubmit)="saveMasterData(masterDataForm.value)" style="margin: 10px;">
+  <h4>
+    Motor Name Plate Details
+  </h4>
+
+  <p>*press ESC to Back</p>
+  <label>
+    Make Name:
+  </label>
+  <div>
+    <select formControlName="Motor_Name">
+      <option *ngFor="let d of jsonData" [ngValue]="d.Make_Code">{{d.Make_Name}}</option>
+    </select>
+    <div style="color: red; text-align: left;" *ngIf="submitted &&f.Motor_Name.errors">Required</div>
+  </div>
+  <div class="Row">
+    <div class="Column">
+      <label>
+        Frame Size:
+      </label>
+      <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.Frame_Size" formControlName="Frame_Size" [ngClass]="{ 'is-invalid': submitted && f.Frame_Size.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.Frame_Size.errors">Required</div>
+    </div>
+    <div class="Column">
+      <label>
+        Capacity (kW):
+      </label>
+      <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.Capacity" formControlName="Capacity" [ngClass]="{ 'is-invalid': submitted && f.Capacity.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.Capacity.errors">Required</div>
+    </div>
+    <div class="Column">
+      <label>
+        Sr. no.:
+      </label>
+      <input type="text" class="form-control" [(ngModel)]="Data.Serial_No" formControlName="Serial_No" [ngClass]="{ 'is-invalid': submitted && f.Serial_No.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.Serial_No.errors">Required</div>
+    </div>
+  </div>
+  <div class="Row">
+    <div class="Column">
+      <label>
+        Voltage (volts):
+      </label>
+      <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.Voltage" formControlName="Voltage" [ngClass]="{ 'is-invalid': submitted && f.Voltage.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.Voltage.errors">Required</div>
+    </div>
+    <div class="Column">
+
+      <label>
+        Model no.:
+      </label>
+      <input type="text" class="form-control" [(ngModel)]="Data.Model_No" formControlName="Model_No" [ngClass]="{ 'is-invalid': submitted && f.Model_No.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.Model_No.errors">Required</div>
+    </div>
+    <div class="Column">
+
+      <label>
+        Current (amps):
+      </label>
+      <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.Current" formControlName="Current" [ngClass]="{ 'is-invalid': submitted && f?.Current?.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f?.Current?.errors">Required</div>
+    </div>
+  </div>
+  <div class="Row">
+    <div class="Column">
+      <label>
+        Type of cooling:
+      </label><br />
+      <input id="fan" type="radio" [(ngModel)]="Data.Type_of_Cooling" formControlName="Type_of_Cooling" value="fan" [ngClass]="{ 'is-invalid': submitted && f.Type_of_Cooling.errors }"> Fan
+      <input id="neutral" type="radio" [(ngModel)]="Data.Type_of_Cooling" formControlName="Type_of_Cooling" value="neutral" [ngClass]="{ 'is-invalid': submitted && f.Type_of_Cooling.errors }"> Neutral
+      <div style="color: red; text-align: left;" *ngIf="submitted &&f.Type_of_Cooling.errors">Required</div>
+    </div>
+    <div class="Column">
+
+      <label>
+        Frequency (Hz):
+      </label>
+      <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.Frequency" formControlName="Frequency" [ngClass]="{ 'is-invalid': submitted && f.Frequency.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.Frequency.errors">Required</div>
+    </div>
+    <div class="Column">
+
+      <label>
+        Class of insulation:
+      </label>
+      <input type="text" class="form-control" [(ngModel)]="Data.Insulation_Class" formControlName="Insulation_Class" [ngClass]="{ 'is-invalid': submitted && f.Insulation_Class.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.Insulation_Class.errors">Required</div>
+    </div>
+  </div>
+  <div class="Row">
+    <div class="Column">
+      <label>
+        pf:
+      </label>
+      <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.Pf" formControlName="Pf" [ngClass]="{ 'is-invalid': submitted && f.Pf.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.Pf.errors">Required</div>
+    </div>
+    <div class="Column">
+
+      <label>
+        Ingress protection  class:
+      </label>
+      <input type="text" class="form-control" [(ngModel)]="Data.Ingress_Protection_Class" formControlName="Ingress_Protection_Class" [ngClass]="{ 'is-invalid': submitted && f.Ingress_Protection_Class.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.Ingress_Protection_Class.errors">Required</div>
+    </div>
+    <div class="Column">
+
+      <label>
+        Efficiency - η %:
+      </label>
+      <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.Efficiency" formControlName="Efficiency" [ngClass]="{ 'is-invalid': submitted && f.Efficiency.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.Efficiency.errors">Required</div>
+    </div>
+  </div>
+  <div class="Row">
+    <div class="Column">
+      <label>
+        duty cycle:
+      </label>
+      <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.Duty_Cycle" formControlName="Duty_Cycle" [ngClass]="{ 'is-invalid': submitted && f.Duty_Cycle.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.Duty_Cycle.errors">Required</div>
+    </div>
+
+    <div class="Column">
+      <label>
+        Date and year of manufacture:
+      </label>
+      <input type="date" class="form-control" [(ngModel)]="Data.Manufacture_Date" formControlName="Manufacture_Date" [ngClass]="{ 'is-invalid': submitted && f.Manufacture_Date.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.Manufacture_Date.errors">Required</div>
+    </div>
+    <div class="Column">
+
+      <label>
+        weight kg:
+      </label>
+      <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.Weight" formControlName="Weight" [ngClass]="{ 'is-invalid': submitted && f.Weight.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.Weight.errors">Required</div>
+    </div>
+  </div>
+  <div class="Row">
+    <div class="Column">
+
+      <label>
+        bearing details:
+      </label>
+      <input type="text" class="form-control" [(ngModel)]="Data.Bearing_Det" formControlName="Bearing_Det" [ngClass]="{ 'is-invalid': submitted && f.Bearing_Det.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.Bearing_Det.errors">Required</div>
+    </div>
+
+    <div class="Column">
+      <label>
+        Motor QR Code:
+      </label>
+      <input type="text" class="form-control" [(ngModel)]="Data.Motor_QR_Code" formControlName="Motor_QR_Code" [ngClass]="{ 'is-invalid': submitted && f.Motor_QR_Code.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.Motor_QR_Code.errors">Required</div>
+    </div>
+    <div class="Column">
+
+      <label>
+        HP:
+      </label>
+      <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.HP" formControlName="HP" [ngClass]="{ 'is-invalid': submitted && f.HP.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.HP.errors">Required</div>
+    </div>
+  </div>
+
+  <div class="Row">
+    <div class="Column">
+      <label>
+        KW:
+      </label>
+      <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.kW" formControlName="kW" [ngClass]="{ 'is-invalid': submitted && f.kW.errors }">
+      <div style="color: red; text-align: center;" *ngIf="submitted &&f.kW.errors">Required</div>
+    </div>
+    <div class="Column">
+      <!--radio-->
+      <label>
+        AC/DC:
+      </label><br>
+      <input id="ac" type="radio" [(ngModel)]="Data.AC_DC" formControlName="AC_DC" value="AC" [ngClass]="{ 'is-invalid': submitted && f.AC_DC.errors }"> AC
+      <input id="dc" type="radio" [(ngModel)]="Data.AC_DC" formControlName="AC_DC" value="DC" [ngClass]="{ 'is-invalid': submitted && f.AC_DC.errors }"> DC
+      <div style="color: red; text-align: left;" *ngIf="submitted &&f.AC_DC.errors">Required</div>
+    </div>
+  
+  <!--radio-->
+
+    <div class="Column">
+
+      <label>
+        Three Phase / Single Phase:
+      </label><br/>
+      <input id="single" type="radio" [(ngModel)]="Data.Phase" formControlName="Phase" value="single" [ngClass]="{ 'is-invalid': submitted && f.Phase.errors }"> Single
+      <input id="three" type="radio" [(ngModel)]="Data.Phase" formControlName="Phase" value="Double" [ngClass]="{ 'is-invalid': submitted && f.Phase.errors }"> Double
+
+      <div style="color: red; text-align: left;" *ngIf="submitted &&f.Phase.errors">Required</div>
+    </div>
+    </div>
+    <!--dropdown-->
+    <label>
+      Type of motor (Induction / SERVO / PMMC / SR):
+    </label>
+    <div>
+      <select formControlName="Type_of_motor">
+        
+        <option *ngFor="let d of jsonData2" [ngValue]="d.Motor_Type_Code">{{d.Motor_Type}}</option>
+      </select>
+      <div style="color: red; text-align: left;" *ngIf="submitted &&f.Type_of_motor.errors">Required</div>
+    </div>
+    <br />
+    <div class="Row">
+      <div class="Column">
+        <label>
+          Service factor:
+        </label>
+        <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.service_factor" formControlName="service_factor" [ngClass]="{ 'is-invalid': submitted && f.service_factor.errors }">
+        <div style="color: red; text-align: center;" *ngIf="submitted &&f.service_factor.errors">Required</div>
+      </div>
+      <div class="Column">
+        <!--radio-->
+        <label>
+          Efficiency class - (IE3 / IE4 / IE5):
+        </label><br />
+        <input id="IE3" type="radio" [(ngModel)]="Data.Efficiency_class" formControlName="Efficiency_class" value="IE3" [ngClass]="{ 'is-invalid': submitted && f.Efficiency_class.errors }"> IE3
+        <input id="IE4" type="radio" [(ngModel)]="Data.Efficiency_class" formControlName="Efficiency_class" value="IE4" [ngClass]="{ 'is-invalid': submitted && f.Efficiency_class.errors }"> IE4
+        <input id="IE5" type="radio" [(ngModel)]="Data.Efficiency_class" formControlName="Efficiency_class" value="IE5" [ngClass]="{ 'is-invalid': submitted && f.Efficiency_class.errors }"> IE5
+        <div style="color: red; text-align: center;" *ngIf="submitted &&f.Efficiency_class.errors">Required</div>
+      </div>
+
+      <div class="Column">
+
+        <label>
+          IP_class:
+        </label>
+        <input type="text" class="form-control" [(ngModel)]="Data.IP_class" formControlName="IP_class" [ngClass]="{ 'is-invalid': submitted && f.IP_class.errors }">
+        <div style="color: red; text-align: center;" *ngIf="submitted &&f.IP_class.errors">Required</div>
+      </div>
+    </div>
+    <div class="Row">
+      <div class="Column">
+
+        <label>
+          NBE:
+        </label>
+        <input type="text" class="form-control" [(ngModel)]="Data.NBE" formControlName="NBE" [ngClass]="{ 'is-invalid': submitted && f.NBE.errors }">
+        <div style="color: red; text-align: center;" *ngIf="submitted &&f.NBE.errors">Required</div>
+      </div>
+      <div class="Column">
+        <!--radio-->
+        <label>
+          vfd:
+        </label><br />
+        <input id="yes" type="radio" [(ngModel)]="Data.VFD" formControlName="VFD" value="Y" [ngClass]="{ 'is-invalid': submitted && f.VFD.errors }"> YES
+        <input id="no" type="radio" [(ngModel)]="Data.VFD" formControlName="VFD" value="N" [ngClass]="{ 'is-invalid': submitted && f.VFD.errors }"> NO
+
+        <div style="color: red; text-align: left;" *ngIf="submitted &&f.VFD.errors">Required</div>
+
+      </div>
+    </div>
+    <br>
+    <br />
+    <button type="submit">Submit</button>
+</form>

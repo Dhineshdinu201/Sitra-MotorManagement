@@ -1,0 +1,45 @@
+<form [formGroup]="masterDataForm" (ngSubmit)="saveMasterData(masterDataForm.value)" style="margin: 10px;">
+  <h4>
+    No Load Test Result
+  </h4>
+  <p>*press ESC to Back</p>
+  <label>
+    Motor Id:
+  </label>
+  <div>
+    <select formControlName="Motor_Id">
+
+      <option *ngFor="let d of jsonData" [ngValue]="d.Motor_Id">{{d.Motor_Name}}</option>
+    </select>
+    <div style="color: red; text-align: center;" *ngIf="submitted &&f.Motor_Id.errors">Required</div>
+  </div>
+  <br />
+
+  <label>
+    R:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.R" formControlName="R" [ngClass]="{ 'is-invalid': submitted && f.R.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.R.errors">Required</div>
+  <br />
+  <label>
+    Y:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.Y" formControlName="Y" [ngClass]="{ 'is-invalid': submitted && f.Y.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.Y.errors">Required</div>
+  <br />
+  <label>
+    B:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.B" formControlName="B" [ngClass]="{ 'is-invalid': submitted && f.B.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.B.errors">Required</div>
+  <br />
+  <label>
+    Tested On:
+  </label>
+  <input type="date" class="form-control" [(ngModel)]="Data.tested_on" formControlName="tested_on" [ngClass]="{ 'is-invalid': submitted && f.tested_on.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.tested_on.errors">Required</div>
+  <br>
+
+
+  <button type="submit">Submit</button>
+</form>

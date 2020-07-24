@@ -1,0 +1,29 @@
+.header {
+  text-align: left;
+  color: white;
+  position: fixed;
+  z-index: 999;
+}
+.Row {
+    background-color: black;
+    display: table;
+    opacity: 0.8;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+}
+.Column {
+    display: table-cell;
+    margin: 10px;
+    border-spacing: 20px;
+}
+.button{
+    padding: 5px;
+    color: white;
+    border: solid white 1px;
+    
+}
+.avatar {
+  width: 70px;
+  height: 70px;
+  margin-left:5px;
+}

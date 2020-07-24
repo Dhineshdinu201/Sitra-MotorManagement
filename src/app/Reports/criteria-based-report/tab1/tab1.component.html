@@ -1,0 +1,59 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>
+        Deparment
+      </th>
+      <th>
+        Machine Name
+      </th>
+
+      <th>
+        Motor
+      </th>
+      <th>
+        Driving Part
+      </th>
+      <th>
+        No load stator loss
+      </th>
+      <th>
+        Full load copper loss
+      </th>
+      <th>
+        Power input kW
+      </th>
+      <th>
+        Total losses
+      </th>
+      <th>
+        Motor output
+      </th>
+      <th>
+        Efficiency
+      </th>
+      <th>
+        Name plate motor rating
+      </th>
+      <th>
+        Load Factor
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of jsonData">
+      <td>{{d.Dept_Name}}</td>
+      <td>{{d.Mac_Name}}</td>
+      <td>{{d.Motor_Name}}</td>
+      <td>{{d.driving_part}}</td>
+      <td>{{d.no_load_stator_loss}}</td>
+      <td>{{d.full_load_copper_loss}}</td>
+      <td>{{d.pwr_inp_kwh}}</td>
+      <td>{{d.tot_loss}}</td>
+      <td>{{d.motor_output}}</td>
+      <td>{{d.motor_effy}}</td>
+      <td>{{d.name_plate_motor_rating}}</td>
+      <td>{{d.load_factor}}</td>
+    </tr>
+  </tbody>
+</table>

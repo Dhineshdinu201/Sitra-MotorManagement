@@ -1,0 +1,26 @@
+<form [formGroup]="masterDataForm" (ngSubmit)="saveMasterData(masterDataForm.value)">
+  <h4>
+    Make Master
+  </h4>
+  <p>*press ESC to Back</p>
+  <label>
+    Make:
+  </label>
+  <input type="text" class="form-control" formControlName="Make_Name" [(ngModel)]="Data.Make_Name" [ngClass]="{ 'is-invalid': submitted && f.Make_Name.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.Make_Name.errors">Required</div>
+  <br />
+  <label>
+    Short Name:
+  </label>
+  <input type="text" class="form-control" formControlName="Make_Shrt_Name" [(ngModel)]="Data.Make_Shrt_Name" [ngClass]="{ 'is-invalid': submitted && f.Make_Shrt_Name.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.Make_Shrt_Name.errors">Required</div>
+  <br />
+  <!--<label>
+    Status:
+  </label><br />
+  <input id="active" type="radio" formControlName="status" name="status" value="active" [ngClass]="{ 'is-invalid': submitted && f.status.errors }"> Active
+  <input id="inactive" type="radio" formControlName="status" name="status" value="inactive" [ngClass]="{ 'is-invalid': submitted && f.status.errors }"> InActive<br>-->
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>

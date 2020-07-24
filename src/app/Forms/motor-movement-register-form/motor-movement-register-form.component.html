@@ -1,0 +1,51 @@
+<form [formGroup]="masterDataForm" (ngSubmit)="saveMasterData(masterDataForm.value)" style="margin: 10px;">
+  <h4>
+    Motor Movement Register
+  </h4>
+  <p>*press ESC to Back</p>
+  <label>
+    Motor Id:
+  </label>
+  <div>
+    <select formControlName="motor_id">
+
+      <option *ngFor="let d of jsonData" [ngValue]="d.motor_id">{{d.Motor_Name}}</option>
+    </select>
+  </div>
+  <br />
+  <label>
+    Movement Date:
+  </label>
+  <input type="date" class="form-control" [(ngModel)]="Data.mov_date" formControlName="mov_date" [ngClass]="{ 'is-invalid': submitted && f.mov_date.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.mov_date.errors">Required</div>
+  <br>
+  <label>
+    Type of movement:
+  </label><br />
+  <input id="Mac-To-Mac" type="radio" formControlName="mov_type" name="mov_type" value="Mac-To-Mac" [ngClass]="{ 'is-invalid': submitted && f.mov_type.errors }"> Mac-To-Mac
+  <input id="Stock-to-Mac" type="radio" formControlName="mov_type" name="mov_type" value="Stock-to-Mac" [ngClass]="{ 'is-invalid': submitted && f.mov_type.errors }">  Stock-to-Mac<br>
+  <input id="Mac-to-Stock" type="radio" formControlName="mov_type" name="mov_type" value="Mac-to-Stock" [ngClass]="{ 'is-invalid': submitted && f.mov_type.errors }"> Mac-to-Stock<br>
+  <input id="Stock-to-Dispose" type="radio" formControlName="mov_type" name="mov_type" value="Stock-to-Dispose" [ngClass]="{ 'is-invalid': submitted && f.mov_type.errors }"> Stock-to-Dispose<br>
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.mov_type.errors">Required</div>
+  <label>
+    Reason:
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.mov_reason" formControlName="mov_reason" [ngClass]="{ 'is-invalid': submitted && f.mov_reason.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.mov_reason.errors">Required</div>
+  <br>
+  <label>
+    From Machine Id:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.from_machine" formControlName="from_machine" [ngClass]="{ 'is-invalid': submitted && f.from_machine.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.from_machine.errors">Required</div>
+  <br />
+  <label>
+    To Machine Id:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.to_machine" formControlName="to_machine" [ngClass]="{ 'is-invalid': submitted && f.to_machine.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.to_machine.errors">Required</div>
+  <br />
+
+
+  <button type="submit">Submit</button>
+</form>

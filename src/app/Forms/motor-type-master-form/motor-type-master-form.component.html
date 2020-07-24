@@ -1,0 +1,16 @@
+<form [formGroup]="masterDataForm" (ngSubmit)="saveMasterData(masterDataForm.value)" style="margin: 10px;">
+  <h4>
+    Motor Type Master
+  </h4>
+  <p>*press ESC to Back</p>
+  <label>
+    Reason:
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.Motor_Type" formControlName="Motor_Type" [ngClass]="{ 'is-invalid': submitted && f.Motor_Type.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.Motor_Type.errors">Required</div>
+  <br>
+  
+
+
+  <button type="submit">Submit</button>
+</form>

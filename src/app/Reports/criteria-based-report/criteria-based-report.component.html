@@ -1,0 +1,33 @@
+
+<form  [formGroup]="masterDataForm" (ngSubmit)="saveMasterData(masterDataForm.value)" style="margin: 10px;">
+  <div>
+
+    <div style="margin-left:100px;">
+      <h5>CRITERIA BASED REPORT</h5>
+      <br />
+      <label>Select Criteria</label>
+      <input id="efficiency" type="radio" formControlName="type" name="type" [(ngModel)]="type" value="efficiency" [ngClass]="{ 'is-invalid': submitted && f?.type.errors }"> Efficiency
+      <input id="failure" type="radio" formControlName="type" name="type" [(ngModel)]="type" value="failure" [ngClass]="{ 'is-invalid': submitted && f?.type.errors }">  Failure<br>
+      <span style="color: red; text-align: center;" *ngIf="submitted &&f.type.errors">Required</span>
+
+      <div *ngIf="type==='efficiency'?true:false">
+        <p>Efiiciency percentage less than or equal to : </p>
+        <select formControlName="percent">
+          <option *ngFor="let d of percent">{{d}}</option>
+        </select>
+      </div>
+      <div *ngIf="type==='failure'?true:false">
+        <label>Nuber of failure greater than or equal to : </label>
+        <input type="text"  formControlName="number" pattern="^\d+$"/>
+      </div>
+      <br/>
+      <button class="submit" type="submit">Submit</button>
+    </div>
+  </div>
+</form>
+<tabset *ngIf="isMotorIdSelected">
+  <tab heading="Tab1 " id="tab1"><app-tab1></app-tab1></tab>
+  <tab heading="Tab2"><app-tab2></app-tab2></tab>
+</tabset>
+
+<!--Data Table-->

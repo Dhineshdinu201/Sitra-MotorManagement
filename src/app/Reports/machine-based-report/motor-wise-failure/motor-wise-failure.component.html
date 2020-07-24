@@ -1,0 +1,30 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Motor</th>
+      <th>Driving Part</th>
+      <th>Department</th>
+      <th>No load stator loss</th>
+      <th>Power input kW</th>
+      <th>Motor output</th>
+      <th>Efficiency</th>
+      <th>Name plate motor ratings</th>
+      <th>Total losses</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of jsonData">
+      <td>{{d.motor_id}}</td>
+      <td>{{d.driving_part}}</td>
+      <td>{{d.Dept_Name}}</td>
+      <td>{{d.no_load_stator_loss}}</td>
+      <td>{{d.pwr_inp_kwh}}</td>
+      <td>{{d.motor_output}}</td>
+      <td>{{d.motor_effy}}</td>
+      <td>{{d.name_plate_motor_rating}}</td>
+      <td>{{d.tot_loss}}</td>
+
+    </tr>
+  </tbody>
+</table>

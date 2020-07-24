@@ -1,0 +1,72 @@
+<form [formGroup]="masterDataForm" (ngSubmit)="saveMasterData(masterDataForm.value)" style="margin: 10px;">
+  <h4>
+    Full Load Measurements
+  </h4>
+  <p>*press ESC to Back</p>
+  <label>
+    Motor Id:
+  </label>
+  <div>
+    <select formControlName="Motor_Id">
+      <option *ngFor="let d of jsonData" [ngValue]="d.Motor_Id">{{d.Motor_Name}}</option>
+    </select>
+    <div style="color: red; text-align: center;" *ngIf="submitted &&f.Motor_Id.errors">Required</div>
+  </div>
+  <br />
+  <label>
+    NO - LOAD VOLTAGE(in Volt) - R:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.noload_voltage_R" formControlName="noload_voltage_R" [ngClass]="{ 'is-invalid': submitted && f.reason_id.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.reason_id.errors">Required</div>
+  <br>
+  <label>
+    NO - LOAD VOLTAGE(in Volt) - Y:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.noload_voltage_Y" formControlName="noload_voltage_Y" [ngClass]="{ 'is-invalid': submitted && f.reason_id.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.reason_id.errors">Required</div>
+  <br>
+  <label>
+    NO - LOAD VOLTAGE(in Volt) - B:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.noload_voltage_B" formControlName="noload_voltage_B" [ngClass]="{ 'is-invalid': submitted && f.reason_id.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.reason_id.errors">Required</div>
+  <br>
+  <label>
+    NO - LOAD CURRENT(in Ampere) - R:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.noload_current_R" formControlName="noload_current_R" [ngClass]="{ 'is-invalid': submitted && f.reason_id.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.reason_id.errors">Required</div>
+  <br>
+  <label>
+    NO - LOAD CURRENT(in Ampere) - Y:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.noload_current_Y" formControlName="noload_current_Y" [ngClass]="{ 'is-invalid': submitted && f.reason_id.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.reason_id.errors">Required</div>
+  <br>
+  <label>
+    NO - LOAD CURRENT(in Ampere) - B:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.noload_current_B" formControlName="noload_current_B" [ngClass]="{ 'is-invalid': submitted && f.reason_id.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.reason_id.errors">Required</div>
+  <br>
+  <label>
+    STATOR RESISTANCE(in ohm) - R:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.stator_resistance_R" formControlName="stator_resistance_R" [ngClass]="{ 'is-invalid': submitted && f.reason_id.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.reason_id.errors">Required</div>
+  <br>
+  <label>
+    STATOR RESISTANCE(in ohm) - Y:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.stator_resistance_Y" formControlName="stator_resistance_Y" [ngClass]="{ 'is-invalid': submitted && f.reason_id.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.reason_id.errors">Required</div>
+  <br>
+  <label>
+    STATOR RESISTANCE(in ohm) - B:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.stator_resistance_B" formControlName="stator_resistance_B" [ngClass]="{ 'is-invalid': submitted && f.reason_id.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.reason_id.errors">Required</div>
+  <br>
+
+  <button type="submit">Submit</button>
+</form>

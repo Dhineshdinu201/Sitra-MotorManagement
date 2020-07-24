@@ -1,0 +1,62 @@
+<form [formGroup]="masterDataForm" (ngSubmit)="saveMasterData(masterDataForm.value)">
+  <h4>
+    Machinery Master
+  </h4>
+  <p>*press ESC to Back</p>
+
+  <label>
+    Machinery Name:
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.Mac_Name" formControlName="Mac_Name" [ngClass]="{ 'is-invalid': submitted && f.Mac_Name.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.Mac_Name.errors">Required</div>
+  <br>
+  <label>
+    Department Code:
+  </label>
+  <div>
+    <select formControlName="Dept_Code">
+
+      <option *ngFor="let d of jsonData" [ngValue]="d.Dept_Code">{{d.Dept_Name}}</option>
+    </select>
+    <div style="color: red; text-align: center;" *ngIf="submitted &&f.Dept_Code.errors">Required</div>
+  </div>
+  <br>
+  <label>
+    Make Code:
+  </label>
+  <div>
+    <select formControlName="Make_Code">
+      <option *ngFor="let d of jsonData2" [ngValue]="d.Make_Code">{{d.Make_Name}}</option>
+    </select>
+    <div style="color: red; text-align: center;" *ngIf="submitted &&f.Make_Code.errors">Required</div>
+  </div>
+  <br>
+  <label>
+    Serial Number :
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.Serial_No" formControlName="Serial_No" [ngClass]="{ 'is-invalid': submitted && f.Serial_No.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.Serial_No.errors">Required</div>
+  <br />
+  <label>
+    Date Of Purchase :
+  </label>
+  <input type="date" class="form-control" [(ngModel)]="Data.Purchase_Date" formControlName="Purchase_Date" [ngClass]="{ 'is-invalid': submitted && f.Purchase_Date.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.Purchase_Date.errors">Required</div>
+  <br />
+  <label>
+    Location :
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.Location" formControlName="Location" [ngClass]="{ 'is-invalid': submitted && f.Location.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.Location.errors">Required</div>
+  <br />
+  <label>
+    Machine QR Code :
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.Mac_QR_Code" formControlName="Mac_QR_Code" [ngClass]="{ 'is-invalid': submitted && f.Mac_QR_Code.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.Mac_QR_Code.errors">Required</div>
+  <br />
+
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>

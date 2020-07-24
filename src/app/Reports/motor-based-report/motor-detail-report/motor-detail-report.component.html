@@ -1,0 +1,65 @@
+<input type="text" #input class="form-control" placeholder="Search....." (keyup)="onKey($event, input.value)">
+<br/>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+
+      <th>
+        Motor
+      </th>
+      <th>
+        Mac
+      </th>
+
+      <th>
+        Motor identification number (to be created by mill)
+      </th>
+      <th>
+        Machine Connected / Stock
+      </th>
+      <th>
+        Serving section
+      </th>
+      <th>
+        Connected machine
+      </th>
+      <th>
+        Driving part / system
+      </th>
+      <th>
+        Motor classification
+      </th>
+      <th>
+        Motor-machine coupling
+      </th>
+      <th>
+        The reason behind the purchase
+      </th>
+      <th>
+        Purchase date, month, year
+      </th>
+
+     
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of jsonData| filter:searchText| paginate: { itemsPerPage: 6, currentPage: p} let i = index ">
+
+      <td>{{d.Motor_Name}}</td>
+      <td>{{d.Mac_Name}}</td>
+      <td>{{d.Motor_number}}</td>
+      <td>{{d.macconnected_stock}}</td>
+      <td>{{d.serving_section}}</td>
+      <td>{{d.connected_machine}}</td>
+      <td>{{d.driving_part}}</td>
+      <td>{{d.motor_classification}}</td>
+      <td>{{d.motor_mac_coupling}}</td>
+      <td>{{d.purchase_reason}}</td>
+      <td>{{d.purchase_date}}</td>
+
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

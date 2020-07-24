@@ -1,0 +1,130 @@
+<input type="text" #input class="form-control" placeholder="Search....." (keyup)="onKey($event, input.value)">
+<br/>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Motor</th>
+      <th>Mac</th>
+      <th>
+        Frame Size
+      </th>
+      <th>
+        Capacity (kW)
+      </th>
+      <th>
+        Sr. no.
+      </th>
+      <th>
+        Voltage (volts)
+      </th>
+      <th>
+        Model no.
+      </th>
+      <th>
+        Current (amps)
+      </th>
+      <th>
+        Type of cooling
+      </th>
+      <th>
+        Frequency (Hz)
+      </th>
+      <th>
+        Class of insulation
+      </th>
+      <th>
+        pf
+      </th>
+      <th>
+        Ingress protection  class
+      </th>
+      <th>
+        Efficiency - η %
+      </th>
+      <th>
+        duty cycle
+      </th>
+      <th>
+        Date and year of manufacture
+      </th>
+      <th>
+        weight kg
+      </th>
+      <th>
+        bearing details
+      </th>
+      <th>
+        Motor QR Code
+      </th>
+      <th>
+        HP
+      </th>
+      <th>
+        kW
+      </th>
+      <th>
+        AC/DC
+      </th>
+      <th>
+        Three Phase / Single Phase
+      </th>
+      <th>
+        Type of motor (Induction / SERVO / PMMC / SR)
+      </th>
+      <th>
+        Service factor
+      </th>
+      <th>
+        Efficiency class - (IE3 / IE4 / IE5)
+      </th>
+      <th>
+        IP Class
+      </th>
+      <th>
+        NBE
+      </th>
+      <th>
+        VFD driven (Y/N)
+      </th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of jsonData| filter:searchText| paginate: { itemsPerPage: 6, currentPage: p} let i = index ">
+      <td>{{d.Motor_Id}}</td>
+
+      <td>{{d.Motor_Name}}</td>
+      <td>{{d.Mac_Name}}</td>
+      <td>{{d.Frame_Size}}</td>
+      <td>{{d.Capacity}}</td>
+      <td>{{d.Serial_No}}</td>
+      <td>{{d.Voltage}}</td>
+      <td>{{d.Model_No}}</td>
+      <td>{{d.Current}}</td>
+      <td>{{d.Type_of_Cooling}}</td>
+      <td>{{d.Frequency}}</td>
+      <td>{{d.Insulation_Class}}</td>
+      <td>{{d.Pf}}</td>
+      <td>{{d.Ingress_Protection_Class}}</td>
+      <td>{{d.Efficiency}}</td>
+      <td>{{d.Duty_Cycle}}</td>
+      <td>{{d.Manufacture_Date}}</td>
+      <td>{{d.Weight}}</td>
+      <td>{{d.Bearing_Det}}</td>
+      <td>{{d.Motor_QR_Code}}</td>
+      <td>{{d.HP}}</td>
+      <td>{{d.kW}}</td>
+      <td>{{d.AC_DC}}</td>
+      <td>{{d.Phase}}</td>
+      <td>{{d.Type_of_motor}}</td>
+      <td>{{d.service_factor}}</td>
+      <td>{{d.Efficiency_class}}</td>
+      <td>{{d.IP_class}}</td>
+      <td>{{d.NBE}}</td>
+      <td>{{d.VFD}}</td>
+
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

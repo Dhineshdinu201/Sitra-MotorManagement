@@ -1,0 +1,37 @@
+
+
+  <div style="background-image:url('assets/motorMback.jpg');height:150px;">
+    <div class="Column">
+
+
+    </div>
+    
+
+    <br />
+
+
+    <br />
+    <div style="margin-top:75px !important;" class="Column" align="right">
+      <div class="Row"></div>
+      <div class="Column">
+        <div style="color:white">Welcome {{name}}</div>
+      </div>
+      <div class="Column button">
+        <a (click)="openModalWithComponent()">Login</a>
+      </div>
+
+      <div class="Column button">
+        <a (click)="openModal(template)">Logout</a>
+      </div>
+
+    </div>
+
+  </div>
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Do you want to Logout?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+  </div>
+</ng-template>
+<!--<div class="collapse navbar-collapse" [collapse]=isCollapsed><app-menu-list (messageEvent)="receiveMessage($event)"></app-menu-list></div>-->

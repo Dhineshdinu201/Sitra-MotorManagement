@@ -1,0 +1,54 @@
+<!-- <div class="vertical-menu">
+        <div class="menu" [ngStyle]="{'background-color':clicked1 === true ? '#4CAF50' : '#000000' }"(click)="click1()">Master Data</div>
+        <div class="menu" [ngStyle]="{'background-color':clicked2 === true ? '#4CAF50' : '#000000' }"(click)="click2()">Make Master</div>
+        <div class="menu" [ngStyle]="{'background-color':clicked3 === true ? '#4CAF50' : '#000000' }"(click)="click3()">Link 2</div>
+        <div class="menu" [ngStyle]="{'background-color':clicked4 === true ? '#4CAF50' : '#000000' }"(click)="click4()">Link 3</div>
+        <div class="menu" [ngStyle]="{'background-color':clicked5 === true ? '#4CAF50' : '#000000' }"(click)="click5()">Link 4</div>
+        <div class="menu" [ngStyle]="{'background-color':clicked1 === true ? '#4CAF50' : '#000000' }"(click)="click1()">Home</div>
+        <div class="menu" [ngStyle]="{'background-color':clicked2 === true ? '#4CAF50' : '#000000' }"(click)="click2()">Link 1</div>
+        <div class="menu" [ngStyle]="{'background-color':clicked3 === true ? '#4CAF50' : '#000000' }"(click)="click3()">Link 2</div>
+        <div class="menu" [ngStyle]="{'background-color':clicked4 === true ? '#4CAF50' : '#000000' }"(click)="click4()">Link 3</div>
+        <div class="menu" [ngStyle]="{'background-color':clicked5 === true ? '#4CAF50' : '#000000' }"(click)="click5()">Link 4</div>
+      </div> -->
+  <div style="width:100%">
+    <div style="background-color:black;color:white" class="menuHeader nav navbar-nav">
+      <!--<div *ngFor="let menu of menulist; let i = index;" [ngClass]="{'highlight': selectedIndex === i}" class="menu" (click)="click(i)">{{menu}}</div>-->
+      <accordion>
+        <accordion-group class="menuHeader nav navbar-nav acButton" panelClass="customClass">
+          <button class="btn btn-link btn-block clearfix acButton" accordion-heading type="button">
+            <img style="height:20px; padding-left:50px; margin-top:10px; float:right;" src='assets/downArrow.png'>
+            <div class="menuHeader">Master Data </div>
+          </button>
+          <div *ngFor="let menu of masterData; let i = index;" [ngClass]="{'highlight': selectedMasterData === i}" class="menu" (click)="clickMasterData(i)">{{menu}}</div>
+
+        </accordion-group>
+        <accordion-group class="menuHeader nav navbar-nav acButton" panelClass="customClass">
+          <button class="btn btn-link btn-block clearfix acButton" accordion-heading type="button">
+            <img style="height:20px; padding-left:50px; margin-top:10px;  text-align:left" src='assets/downArrow.png'>
+            <div class="menuHeader">Motor Master Data</div>
+          </button>
+          <div *ngFor="let menu of motorMasterData; let i = index;" [ngClass]="{'highlight': selectedMotorMasterData === i}" class="menu" (click)="clickMotorMasterData(i)">{{menu}}</div>
+
+        </accordion-group>
+        <accordion-group class="menuHeader nav navbar-nav acButton" panelClass="customClass">
+          <button class="btn btn-link btn-block clearfix acButton" accordion-heading type="button">
+            <img style="height:20px; margin-top:10px; padding-left:50px; float:right; text-align:left" src='assets/downArrow.png'>
+            <div class="menuHeader">Motor Technical Details</div>
+          </button>
+          <div *ngFor="let menu of motorTechnicalDetails; let i = index;" [ngClass]="{'highlight': selectedMotorTech === i}" class="menu" (click)="clickMotorTech(i)">{{menu}}</div>
+
+        </accordion-group>
+        <button class="Headermenu btn btn-link btn-block clearfix acButton" [ngClass]="{'highlight': isMotorFailure}" (click)="motorFailure()">Motor failure information</button>
+        <button class="Headermenu btn btn-link btn-block clearfix acButton" [ngClass]="{'highlight': isMotorMovement}" (click)="motorMovement()">Motor movement register</button>
+        <button class="Headermenu btn btn-link btn-block clearfix acButton" [ngClass]="{'highlight': isEfficiencyCalculation}" (click)="efficiencyCalculation()">Efficiency Calculations</button>
+        <accordion-group class="menuHeader nav navbar-nav acButton" panelClass="customClass">
+          <button class="btn btn-link btn-block clearfix acButton" accordion-heading type="button">
+            <img style="height:20px; margin-top:10px; padding-left:50px; float:right;" src='assets/downArrow.png'>
+            <div class="menuHeader">Reports</div>
+          </button>
+          <div *ngFor="let menu of Reports; let i = index;" [ngClass]="{'highlight': isReportClick === i}" class="menu" (click)="clickReport(i)">{{menu}}</div>
+
+        </accordion-group>
+      </accordion>
+    </div>
+  </div>

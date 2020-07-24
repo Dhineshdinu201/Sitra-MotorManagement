@@ -1,0 +1,54 @@
+<h4>MOTOR FAILURE TAGS</h4>
+<div style="border: 1px solid #DDD;">
+  <img style="height:30px;width:30px;" src="assets/search.png" />
+  <input type="text" style="width:80%;border:none; padding:8px;" #input placeholder="Search....." (keyup)="onKey($event, input.value)" />
+  <button style="width: 100px;margin: 10px;padding: 8px;" (click)="Add()">Add</button>
+</div>
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>
+       ID
+      </th>
+      <th>
+        Colour Code
+      </th>
+      <th>
+        Remarks
+      </th>
+      <th>
+        Status
+      </th>
+
+      <th>Action</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of jsonData| filter:searchText| paginate: { itemsPerPage: 6, currentPage: p} let i = index ">
+      <td>{{d.failure_tag_id}}</td>
+      <td>{{d.colour_code}}</td>
+      <td>{{d.remarks}}</td>
+      <td>{{d.Status}}</td>
+
+
+      <td>
+        <div class="btn-group">
+          <img style="widows:25px;height:25px; margin-top:10px; float:right; text-align:left" src='assets/edit.png' (click)="Edit(d)">
+          <img style="widows:25px;height:25px; margin-top:10px; float:right; text-align:left" src='assets/delete.png' (click)="openModal(template,i,d)">
+          <img style="widows:25px;height:25px; margin-top:10px; float:right; text-align:left" src='assets/view.png' (click)="View(d)">
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Do you want to Delete?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()">Yes</button>
+  </div>
+</ng-template>

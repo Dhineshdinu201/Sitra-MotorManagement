@@ -1,0 +1,51 @@
+<nav class="navigation">
+  <ul class="mainmenu">
+    <li>
+      
+      <a class="head" ><span  style="background-color:transparent;">
+  <img (click)="clickMasterData(0)" *ngIf="!isMenu1" style="width:20px;height:20px;" src='assets/plus.png'>
+  <img (click)="collapseAll()" *ngIf="isMenu1" style="width:20px;height:20px;" src='assets/minus.png'>
+</span>
+      &nbsp;   Master Data
+      </a>
+
+      <ul class="submenu" *ngFor="let menu of masterData; let i = index;">
+        <li><a *ngIf="isMenu1" (click)="clickMasterData(i)" [ngClass]="{'highlight': selectedMasterData === i}">{{menu}}</a></li>
+      </ul>
+    </li>
+    <li>
+      <a class="head">
+        <span style="background-color:transparent;">
+          <img (click)="clickMotorMasterData(0)" *ngIf="!isMenu2" style="width:20px;height:20px;" src='assets/plus.png'>
+          <img (click)="collapseAll()" *ngIf="isMenu2" style="width:20px;height:20px;" src='assets/minus.png'>
+        </span>
+      &nbsp;  Motor Master Data
+      </a>
+      <ul class="submenu"  *ngFor="let menu of motorMasterData; let i = index;">
+        <li><a  *ngIf="isMenu2" (click)="clickMotorMasterData(i)"  [ngClass]="{'highlight': selectedMasterData === i}">{{menu}}</a></li>
+      </ul>
+    </li>
+    <li>
+      <a class="head"><span style="background-color:transparent;" >
+  <img  (click)="clickMotorTech(0)" *ngIf="!isMenu3" style="width:20px;height:20px;" src='assets/plus.png'>
+  <img (click)="collapseAll()" *ngIf="isMenu3" style="width:20px;height:20px;" src='assets/minus.png'>
+</span>   &nbsp;   Motor Technical Details</a>
+      <ul class="submenu"  *ngFor="let menu of motorTechnicalDetails; let i = index;" >
+        <li><a  *ngIf="isMenu3" (click)="clickMotorTech(i)"  [ngClass]="{'highlight': selectedMasterData === i}">{{menu}}</a></li>
+      </ul>
+    </li>
+    <li><a (click)="motorFailure()" class="singleMenu" [ngClass]="{'highlight': isMotorFailure}">Motor failure information</a></li>
+    <li><a (click)="motorMovement()" class="singleMenu" [ngClass]="{'highlight': isMotorMovement}" >Motor movement register</a></li>
+    <li><a (click)="efficiencyCalculation()" class="singleMenu" [ngClass]="{'highlight': isEfficiencyCalculation}">Efficiency Calculations</a></li>
+    <li>
+      <a class="head" ><span   style="background-color:transparent;">
+  <img  (click)="clickReport(0)"*ngIf="!isMenu4" style="width:20px;height:20px;" src='assets/plus.png'>
+  <img (click)="collapseAll()" *ngIf="isMenu4" style="width:20px;height:20px;" src='assets/minus.png'>
+</span>  &nbsp;    Reports</a>
+      <ul class="submenu"  *ngFor="let menu of Reports; let i = index;">
+        <li><a (click)="clickReport(i)" *ngIf="isMenu4"  [ngClass]="{'highlight': selectedMasterData === i}">{{menu}}</a></li>
+      </ul>
+    </li>
+
+  </ul>
+</nav>

@@ -1,0 +1,24 @@
+<div style="margin-left:5px;">
+  <div>
+    <p>Select Motor</p>
+    <select #motorModel>
+      <option *ngFor="let d of jsonData" [ngValue]="d.Motor_Id">{{d.Motor_Name}}</option>
+    </select>
+    <a class="view" style="padding:5px;color:white;margin-left:10px;" (click)="submit(motorModel.value)">Submit</a>
+  </div>
+  <br />
+  <br />
+  <br />
+  <br />
+  <tabset *ngIf="isMotorIdSelected">
+    <tab heading="Name plate details " id="tab1"><app-motor-name-plate-report></app-motor-name-plate-report></tab>
+    <tab heading="Motor details"><app-motor-detail-report></app-motor-detail-report></tab>
+    <tab heading="No Load Test Results"><app-no-load-test-results-report></app-no-load-test-results-report></tab>
+    <tab heading="No load measurements"><app-no-load-measurements-reports></app-no-load-measurements-reports></tab>
+    <tab heading="No Load Power Measurements"><app-no-load-power-measurement-report></app-no-load-power-measurement-report></tab>
+    <tab heading="Full load measurements"><app-full-load-measurements-report></app-full-load-measurements-report></tab>
+    <tab heading="Efficiency details"><app-motor-efficieny-details></app-motor-efficieny-details></tab>
+    <tab heading="Failure history"><app-motor-failure-information-report></app-motor-failure-information-report></tab>
+  </tabset>
+
+</div>

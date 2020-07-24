@@ -1,0 +1,36 @@
+<form [formGroup]="masterDataForm" (ngSubmit)="saveMasterData(masterDataForm.value)" style="margin: 10px;">
+  <h4>
+    No Load Power Measurements
+  </h4>
+  <p>*press ESC to Back</p>
+  <label>
+    Motor Id:
+  </label>
+  <div>
+    <select formControlName="Motor_Id">
+
+      <option *ngFor="let d of jsonData" [ngValue]="d.Motor_Id">{{d.Motor_Name}}</option>
+    </select>
+    <div style="color: red; text-align: center;" *ngIf="submitted &&f.Motor_Id.errors">Required</div>
+  </div>
+  <br />
+  <label>
+    Serial Number:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.serial_number" formControlName="serial_number" [ngClass]="{ 'is-invalid': submitted && f.serial_number.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.serial_number.errors">Required</div>
+  <br />
+  <label>
+    No-Load power (watts) - Before failure - 1':
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.noload_power_bef_fail_1" formControlName="noload_power_bef_fail_1" [ngClass]="{ 'is-invalid': submitted && f.noload_power_bef_fail_1.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.noload_power_bef_fail_1.errors">Required</div>
+  <br />
+  <label>
+    No-Load power (watts) - Before failure - 2'
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.noload_power_bef_fail_2" formControlName="noload_power_bef_fail_2" [ngClass]="{ 'is-invalid': submitted && f.noload_power_bef_fail_2.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.noload_power_bef_fail_2.errors">Required</div>
+  <br />
+  <button type="submit">Submit</button>
+</form>

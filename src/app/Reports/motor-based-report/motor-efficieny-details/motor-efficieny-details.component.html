@@ -1,0 +1,96 @@
+<div class="head">
+  <input type="text" #input class="form-control" placeholder="Search....." (keyup)="onKey($event, input.value)">
+
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+
+      <th>Motor Name</th>
+      <th>Mac Name</th>
+      <th>No Load RYB</th>
+
+      <th>
+        No Load Stator Loss
+      </th>
+      <th>
+        Pi + PFw
+      </th>
+      <th>
+        Full Load Copper Loss
+      </th>
+      <th>
+        Full Load Measurement - R
+      </th>
+      <th>
+        Full Load Measurement - Y
+      </th>
+      <th>
+        Full Load Measurement - B
+      </th>
+      <th>
+        Power Input KWh
+      </th>
+      <th>
+        Pi + PFw + Full Load Copper Loss
+      </th>
+      <th>
+        Stary Losses @5%
+      </th>
+      <th>
+        Total Losses
+      </th>
+      <th>
+        Motor Output
+      </th>
+      <th>
+        Motor Effy
+      </th>
+      <th>
+        Motor Name Plate Rating
+      </th>
+      <th>
+        Load Factor
+      </th>
+      <th>
+        Run By
+      </th>
+      <th>
+        Run Date
+      </th>
+
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of jsonData| filter:searchText| paginate: { itemsPerPage: 6, currentPage: p} let i = index ">
+
+      <td>{{d.Motor_Name}}</td>
+      <td>{{d.Mac_Name}}</td>
+      <td>{{d.no_load_RYB}}</td>
+      <td>{{d.no_load_stator_loss}}</td>
+      <td>{{d.pipluspfw}}</td>
+      <td>{{d.full_load_copper_loss}}</td>
+      <td>{{d.full_load_R}}</td>
+      <td>{{d.full_load_Y}}</td>
+      <td>{{d.full_load_B}}</td>
+      <td>{{d.pwr_inp_kwh}}</td>
+      <td>{{d.pipluspw_full_load_loss}}</td>
+      <td>{{d.stary_losses}}</td>
+      <td>{{d.tot_loss}}</td>
+      <td>{{d.motor_output}}</td>
+      <td>{{d.motor_effy}}</td>
+      <td>{{d.name_plate_motor_rating}}</td>
+      <td>{{d.load_factor}}</td>
+      <td>{{d.run_by}}</td>
+      <td>{{d.run_date}}</td>
+
+
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+

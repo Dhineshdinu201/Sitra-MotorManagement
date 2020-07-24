@@ -1,0 +1,59 @@
+<br/>
+<br />
+<div style="margin-left:100px;">
+  <h5>MOTOR FAILURE REPORT</h5>
+  <br />
+  <div>
+    <label>
+      From Date:
+    </label>
+    <input type="date" [(ngModel)]="fromDate">
+
+    <label style="margin-left:100px;">
+      To Date:
+    </label>
+    <input type="date" [(ngModel)]="toDate">
+  </div>
+  <br />
+  <br />
+  <button style="width:300px;" (click)="submit()">submit</button>
+</div>
+
+<br />
+<br />
+<table class="table table-bordered" *ngIf="isSubmitted">
+  <thead>
+    <tr>
+      <th>
+        Motor
+      </th>
+      <th>Mac</th>
+      <th>
+        Driving Part
+      </th>
+      <th>
+        Date of Failure
+      </th>
+      <th>
+        Reason
+      </th>
+      <th>
+        Remarks
+      </th>
+      <th>
+        Date of re-installation
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of jsonData">
+      <td>{{d.Motor_Name}}</td>
+      <td>{{d.Mac_Name}}</td>
+      <td>{{d.driving_part}}</td>
+      <td>{{d.date_of_failure}}</td>
+      <td>{{d.reason}}</td>
+      <td>{{d.remarks}}</td>
+      <td>{{d.date_of_re_installation}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,42 @@
+<form [formGroup]="masterDataForm" (ngSubmit)="saveMasterData(masterDataForm.value)" style="margin: 10px;">
+  <h4>
+    Failure Information
+  </h4>
+  <p>*press ESC to Back</p>
+  <label>
+    Motor Id:
+  </label>
+  <div>
+    <select formControlName="Motor_Id">
+
+      <option *ngFor="let d of jsonData" [ngValue]="d.Motor_Id">{{d.Motor_Name}}</option>
+    </select>
+    <div style="color: red; text-align: center;" *ngIf="submitted &&f.Motor_Id.errors">Required</div>
+  </div>
+  <br />
+  <label>
+    Date Of Failure:
+  </label>
+  <input type="date" class="form-control" [(ngModel)]="Data.date_of_failure" formControlName="date_of_failure" [ngClass]="{ 'is-invalid': submitted && f.date_of_failure.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.date_of_failure.errors">Required</div>
+  <br>
+  <label>
+    Reason Id:
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.reason_id" formControlName="reason_id" [ngClass]="{ 'is-invalid': submitted && f.reason_id.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.reason_id.errors">Required</div>
+  <br>
+  <label>
+    Remarks:
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.remarks" formControlName="remarks" [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.remarks.errors">Required</div>
+  <br />
+  <label>
+    Date Of Re-Installation:
+  </label>
+  <input type="date" class="form-control" [(ngModel)]="Data.date_of_re_installation" formControlName="date_of_re_installation" [ngClass]="{ 'is-invalid': submitted && f.date_of_re_installation.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.date_of_re_installation.errors">Required</div>
+  <br>
+  <button type="submit">Submit</button>
+</form>

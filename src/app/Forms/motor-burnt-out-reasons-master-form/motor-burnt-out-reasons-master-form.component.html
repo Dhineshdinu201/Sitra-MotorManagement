@@ -1,0 +1,21 @@
+<form [formGroup]="masterDataForm" (ngSubmit)="saveMasterData(masterDataForm.value)">
+  <h4>
+   Motor Burns-out Reason
+  </h4>
+  <p>*press ESC to Back</p>
+  <label>
+    Reason:
+  </label>
+  <input type="text" class="form-control" formControlName="reason" [(ngModel)]="Data.reason" [ngClass]="{ 'is-invalid': submitted && f.reason.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.reason.errors">Required</div>
+  <br />
+
+  <!--<label>
+    Status:
+  </label><br />
+  <input id="active" type="radio" formControlName="status" name="status" value="active" [ngClass]="{ 'is-invalid': submitted && f.status.errors }"> Active
+  <input id="inactive" type="radio" formControlName="status" name="status" value="inactive" [ngClass]="{ 'is-invalid': submitted && f.status.errors }"> InActive<br>-->
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>

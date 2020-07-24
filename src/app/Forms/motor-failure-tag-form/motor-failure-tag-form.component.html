@@ -1,0 +1,20 @@
+<form [formGroup]="masterDataForm" (ngSubmit)="saveMasterData(masterDataForm.value)" style="margin: 10px;">
+  <h4>
+    Motor Failure Tag
+  </h4>
+  <p>*press ESC to Back</p>
+  <label>
+    Colour Code:
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.colour_code" formControlName="colour_code" [ngClass]="{ 'is-invalid': submitted && f.colour_code.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.colour_code.errors">Required</div>
+  <br>
+  <label>
+    Remarks
+  </label>
+  <input type="text" class="form-control" [(ngModel)]="Data.remarks" formControlName="remarks" [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.remarks.errors">Required</div>
+  <br />
+
+  <button type="submit">Submit</button>
+</form>

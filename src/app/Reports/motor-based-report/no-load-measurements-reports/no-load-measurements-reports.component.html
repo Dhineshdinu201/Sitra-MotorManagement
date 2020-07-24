@@ -1,0 +1,60 @@
+<input type="text" #input class="form-control" placeholder="Search....." (keyup)="onKey($event, input.value)">
+<br />
+<table class="table table-bordered">
+  <thead>
+    <tr>
+
+      <th>
+        ID
+      </th>
+      <th>
+        Motor
+      </th>
+      <th>Mac</th>
+      <th>
+        NO-LOAD VOLTAGE (in Volt) - R
+      </th>
+      <th>
+        NO-LOAD VOLTAGE (in Volt) - Y
+      </th>
+      <th>
+        NO-LOAD VOLTAGE (in Volt) - B
+      </th>
+      <th>
+        NO- LOAD CURRENT (in Ampere) - R
+      </th>
+      <th>
+        NO- LOAD CURRENT (in Ampere) - Y
+      </th>
+      <th>
+        NO- LOAD CURRENT (in Ampere) - B
+      </th>
+      <th>
+        STATOR RESISTANCE (in ohm) - R
+      </th>
+      <th>STATOR RESISTANCE (in ohm) - Y</th>
+      <th>STATOR RESISTANCE (in ohm) - B</th>
+      <th>STATOR TEMPERATURE(in deg C)</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of jsonData| filter:searchText| paginate: { itemsPerPage: 6, currentPage: p} let i = index ">
+      <td>{{d.load_id}}</td>
+      <td>{{d.Motor_Name}}</td>
+      <td>{{d.Mac_Name}}</td>
+      <td>{{d.noload_voltage_R}}</td>
+      <td>{{d.noload_voltage_Y}}</td>
+      <td>{{d.noload_voltage_B}}</td>
+      <td>{{d.noload_current_R}}</td>
+      <td>{{d.noload_current_Y}}</td>
+      <td>{{d.noload_current_B}}</td>
+      <td>{{d.stator_resistance_R}}</td>
+      <td>{{d.stator_resistance_Y}}</td>
+      <td>{{d.stator_resistance_B}}</td>
+      <td>{{d.stator_temperature}}</td>
+
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

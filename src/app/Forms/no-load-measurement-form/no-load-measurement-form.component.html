@@ -1,0 +1,81 @@
+<form [formGroup]="masterDataForm" (ngSubmit)="saveMasterData(masterDataForm.value)" style="margin: 10px;">
+  <h4>
+    No Load Measurement
+  </h4>
+  <p>*press ESC to Back</p>
+  <label>
+    Motor Id:
+  </label>
+  <div>
+    <select formControlName="Motor_Id">
+
+      <option *ngFor="let d of jsonData" [ngValue]="d.Motor_Id">{{d.Motor_Name}}</option>
+    </select>
+    <div style="color: red; text-align: center;" *ngIf="submitted &&f.Motor_Id.errors">Required</div>
+  </div>
+  <br />
+
+  <label>
+    NO-LOAD VOLTAGE (in Volt) - R:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.noload_voltage_R" formControlName="noload_voltage_R" [ngClass]="{ 'is-invalid': submitted && f.noload_voltage_R.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.noload_voltage_R.errors">Required</div>
+  <br />
+  <label>
+    NO-LOAD VOLTAGE (in Volt) - Y:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.noload_voltage_Y" formControlName="noload_voltage_Y" [ngClass]="{ 'is-invalid': submitted && f.noload_voltage_Y.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.noload_voltage_Y.errors">Required</div>
+  <br />
+  <label>
+    noload_voltage_B:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.noload_voltage_B" formControlName="noload_voltage_B" [ngClass]="{ 'is-invalid': submitted && f.noload_voltage_B.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.noload_voltage_B.errors">Required</div>
+  <br />
+  <label>
+    noload_current_R:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.noload_current_R" formControlName="noload_current_R" [ngClass]="{ 'is-invalid': submitted && f.noload_current_R.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.noload_current_R.errors">Required</div>
+  <br />
+  <label>
+    noload_current_Y:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.noload_current_Y" formControlName="noload_current_Y" [ngClass]="{ 'is-invalid': submitted && f.noload_current_Y.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.noload_current_Y.errors">Required</div>
+  <br />
+  <label>
+    noload_current_B:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.noload_current_B" formControlName="noload_current_B" [ngClass]="{ 'is-invalid': submitted && f.noload_current_B.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.noload_current_B.errors">Required</div>
+  <br />
+  <label>
+    stator_resistance_R:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.stator_resistance_R" formControlName="stator_resistance_R" [ngClass]="{ 'is-invalid': submitted && f.stator_resistance_R.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.stator_resistance_R.errors">Required</div>
+  <br />
+  <label>
+    stator_resistance_Y:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.stator_resistance_Y" formControlName="stator_resistance_Y" [ngClass]="{ 'is-invalid': submitted && f.stator_resistance_Y.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.stator_resistance_Y.errors">Required</div>
+  <br />
+  <label>
+    stator_resistance_B:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.stator_resistance_B" formControlName="stator_resistance_B" [ngClass]="{ 'is-invalid': submitted && f.stator_resistance_B.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.stator_resistance_B.errors">Required</div>
+  <br />
+  <label>
+    stator_temperature:
+  </label>
+  <input type="text" class="form-control" pattern="^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$" [(ngModel)]="Data.stator_temperature" formControlName="stator_temperature" [ngClass]="{ 'is-invalid': submitted && f.stator_temperature.errors }">
+  <div style="color: red; text-align: center;" *ngIf="submitted &&f.stator_temperature.errors">Required</div>
+  <br />
+
+
+  <button type="submit">Submit</button>
+</form>
