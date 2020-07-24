@@ -13,10 +13,7 @@ export class MotorMovementDetailsComponent implements OnInit {
   isMotorIdSelected: boolean;
   constructor(private dataservice: DataServiceService, private apiService: ApiService, private router: Router) {
     this.dataservice.getAllMotorMovementRegisterData().subscribe((res: any[]) => {
-      console.log(res);
       this.jsonData = res;
-
-
     });
   }
   ngOnInit() {
@@ -24,6 +21,5 @@ export class MotorMovementDetailsComponent implements OnInit {
   submit(machineId: any) {
     this.isMotorIdSelected = true;
     this.apiService.setMachineId(machineId);
-
   }
 }

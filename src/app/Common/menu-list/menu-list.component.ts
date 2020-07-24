@@ -42,30 +42,19 @@ export class MenuListComponent implements OnInit {
     this.menulist.push("Machinery");
     this.menulist.push("Motor Details");
 
-
-
     this.motorTechnicalDetails.push("No Load Test Results");
     this.motorTechnicalDetails.push("No Load Measurement");
     this.motorTechnicalDetails.push("No Load Power Measurements");
     this.motorTechnicalDetails.push("Full Load Measurements");
-    
-    
-    //this.menulist.push("Failure Information");
-    //this.menulist.push("Motor Movement Register");
-
 
     this.Reports.push("Motor based report");
     this.Reports.push("Machine based report");
     this.Reports.push("Criteria based query report ");
     this.Reports.push("Motor change report");
     this.Reports.push("Motor failure report");
-
-    
   }
   click(index) {
-    
       this.messageEvent.emit(true)
-    
     if (index == 4) {
       this.router.navigate(['/MotorNamePlateList']);
     }
@@ -99,7 +88,6 @@ export class MenuListComponent implements OnInit {
     this.selectedIndex = index;
     this.apiService.isMenuClick = true;
     window.scroll(0,0);
-
   }
   clickMotorTech(index) {
     this.selectedMotorTech = index;
@@ -167,7 +155,6 @@ export class MenuListComponent implements OnInit {
       this.router.navigate(['/MotorDetailsList']);
     }
   }
-
   motorFailure() {
     this.isReportClick = false;
     this.isMotorFailure = true;

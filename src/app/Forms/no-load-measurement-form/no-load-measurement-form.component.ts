@@ -16,23 +16,18 @@ export class NoLoadMeasurementFormComponent implements OnInit {
   isUpdate: boolean = false;
   spresp: any;
   motorIdValue: number;
+  public event: EventEmitter<any> = new EventEmitter();
   jsonData: any;
   Data: any = {};
   constructor(public formBuilder: FormBuilder, public dataservice: DataServiceService, public apiService: ApiService, public toastr: ToastrService) {
-
     this.dataservice.getActiveMotorNamePlate().subscribe((res: any[]) => {
       this.jsonData = res;
     });
     this.Data = this.apiService.getEditMasterData();
-    console.log(this.Data);
-
-
     if (this.Data == undefined) {
       this.Data = {};
     }
-
     this.apiService.setEditMasterData({});
-    console.log(this.Data.motor_id);
     this.masterDataForm = this.formBuilder.group({
       Motor_Id: [this.Data.Motor_Id, Validators.required],
       noload_voltage_R: ['', Validators.required],
@@ -46,9 +41,7 @@ export class NoLoadMeasurementFormComponent implements OnInit {
       stator_resistance_B: ['', Validators.required],
       stator_temperature: ['', Validators.required]
     });
-
   }
-
   ngOnInit() {
   }
   saveMasterData(departmentMaster: any) {
@@ -56,13 +49,13 @@ export class NoLoadMeasurementFormComponent implements OnInit {
     if (!(this.masterDataForm.invalid)) {
     departmentMaster.custid = this.apiService.getCusId();
     departmentMaster.Motor_Type_Code = this.Data.Motor_Type_Code;
-    console.log(departmentMaster);
     if (departmentMaster.Motor_Type_Code != null) {
       this.submitted = true;
       this.dataservice.updateNoLoadMeasurementsData(departmentMaster).subscribe(resp => {
         if (resp == true) {
           this.toastr.success("sucessfully Added")
           this.apiService.closeModal();
+          this.sendMessage(true);
         }
       });
     } else {
@@ -72,13 +65,16 @@ export class NoLoadMeasurementFormComponent implements OnInit {
         if (resp == true) {
           this.toastr.success("sucessfully Added")
           this.apiService.closeModal();
+          this.sendMessage(true);
         }
       });
-
     }
     } else {
       this.toastr.error("Form Invalid")
     }
+  }
+  sendMessage(popHide: boolean) {
+    this.event.emit(popHide);
   }
   get f() { return this.masterDataForm.controls; }
 }

@@ -17,26 +17,18 @@ export class MotorFailureReportComponent implements OnInit {
   checkLogin: boolean;
   toDate: any;
   constructor(public dataservice: DataServiceService, private apiservice: ApiService, private toastr: ToastrService) {
-    
-
-
-   
     this.checkLogin = this.apiservice.getLoginClick();
     if (!this.checkLogin) {
       this.apiservice.openModalWithComponent(LoginComponent);
     }
   }
-
   ngOnInit() {
   }
   submit() {
     this.isSubmitted = true;
-    console.log(this.fromDate);
-    console.log(this.toDate);
     if (!(this.fromDate == undefined && this.toDate == undefined)) {
       let data = { 'fromdate': this.fromDate, 'todate': this.toDate }
       this.dataservice.selectActiveMotor_failure_detailsDataCric(data).subscribe((res: any[]) => {
-        console.log(res);
         this.jsonData = res;
       });
     } else {
@@ -44,5 +36,4 @@ export class MotorFailureReportComponent implements OnInit {
       this.isSubmitted = false;
     }
   }
-
 }

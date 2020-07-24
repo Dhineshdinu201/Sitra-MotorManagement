@@ -16,18 +16,12 @@ export class MotorFailureINformationReportComponent implements OnInit {
   motorId = this.apiservice.getMOtorId();
   constructor(public dataservice: DataServiceService, private http: HttpClient, private router: Router, private apiservice: ApiService, private toastr: ToastrService) {
     this.dataservice.selectActiveMotor_failure_detailsData(this.motorId).subscribe((res: any[]) => {
-      console.log(res);
       this.jsonData = res;
-
-
     });
   }
-
   ngOnInit() {
   }
   onKey(event, newValue) {
-
     this.searchText = newValue;
-
   }
 }

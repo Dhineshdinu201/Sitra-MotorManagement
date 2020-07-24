@@ -84,8 +84,6 @@ import { MotorFailureReportComponent } from './Reports/motor-failure-report/moto
 import { UserComponent } from './Common/user/user.component';
 import { MenuList2Component } from './Common/menu-list2/menu-list2.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -155,9 +153,6 @@ import { MenuList2Component } from './Common/menu-list2/menu-list2.component';
     MotorFailureReportComponent,
     UserComponent,
     MenuList2Component,
-    
-    
-
   ],
   imports: [
     BrowserModule,
@@ -171,14 +166,11 @@ import { MenuList2Component } from './Common/menu-list2/menu-list2.component';
     AppRoutingModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), ModalModule.forRoot(), BsDropdownModule.forRoot(), TabsModule.forRoot()
-
   ],
   exports: [DepartmentMasterViewComponent],
   providers: [],
   entryComponents: [
-
     //Views
-
     DepartmentMasterViewComponent,
     MakeMasterViewComponent,
     MachineryMasterViewComponent,
@@ -193,9 +185,7 @@ import { MenuList2Component } from './Common/menu-list2/menu-list2.component';
     MotorBurntOutReasonsMasterViewComponent,
     FailureInformationViewComponent,
     MotorMovementRegisterViewComponent,
-
     //forms
-
     DepartmentMasterFormComponent,
     MakeMasterFormComponent,
     MotorTypeMasterFormComponent,

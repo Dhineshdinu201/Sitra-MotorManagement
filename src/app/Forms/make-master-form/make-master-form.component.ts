@@ -16,25 +16,20 @@ export class MakeMasterFormComponent implements OnInit {
   isUpdate: boolean = false;
   spresp: any;
   motorIdValue: number;
+  public event: EventEmitter<any> = new EventEmitter();
   jsonData: any;
   Data: any = {};
   constructor(public formBuilder: FormBuilder, public dataservice: DataServiceService, public apiService: ApiService, public toastr: ToastrService) {
     this.Data = this.apiService.getEditMasterData();
-    console.log(this.Data);
-
-
     if (this.Data == undefined) {
       this.Data = {};
     }
-
     this.apiService.setEditMasterData({});
     this.masterDataForm = this.formBuilder.group({
       Make_Name: ['', Validators.required],
       Make_Shrt_Name: ['', Validators.required],
     });
-
   }
-
   ngOnInit() {
     this.submitted = false;
   }
@@ -43,13 +38,13 @@ export class MakeMasterFormComponent implements OnInit {
     if (!(this.masterDataForm.invalid)) {
       departmentMaster.custid = this.apiService.getCusId();
       departmentMaster.Make_Code = this.Data.Make_Code
-      console.log(departmentMaster);
       if (departmentMaster.Make_Code != null) {
         this.submitted = true;
         this.dataservice.updateMakeMasterData(departmentMaster).subscribe(resp => {
           if (resp == true) {
             this.toastr.success("sucessfully Added")
             this.apiService.closeModal();
+            this.sendMessage(true);
           }
         });
       } else {
@@ -59,13 +54,16 @@ export class MakeMasterFormComponent implements OnInit {
           if (resp == true) {
             this.toastr.success("sucessfully Added")
             this.apiService.closeModal();
+            this.sendMessage(true);
           }
         });
-
       }
     } else {
       this.toastr.error("Form Invalid")
     }
+  }
+  sendMessage(popHide: boolean) {
+    this.event.emit(popHide);
   }
   get f() { return this.masterDataForm.controls; }
 }

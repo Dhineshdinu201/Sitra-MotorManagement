@@ -22,8 +22,6 @@ import { CriteriaBasedReportComponent } from './Reports/criteria-based-report/cr
 import { MotorMovementRegisterReportComponent } from './Reports/motor-movement-register-report/motor-movement-register-report.component';
 import { MotorFailureReportComponent } from './Reports/motor-failure-report/motor-failure-report.component';
 
-
-
 const routes: Routes = [
   {
     path: "login", component: LoginComponent

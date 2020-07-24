@@ -9,9 +9,7 @@ import { ApiService } from '../../Common/api.service';
 })
 export class DepartmentMasterViewComponent implements OnInit {
   Data: any = {};
-  
   constructor(public apiService: ApiService) { }
-
   ngOnInit() {
     this.Data = this.apiService.getEditMasterData();
     if (this.Data == undefined) {
@@ -19,5 +17,4 @@ export class DepartmentMasterViewComponent implements OnInit {
     }
     this.apiService.setEditMasterData({});
   }
-
 }

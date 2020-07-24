@@ -19,7 +19,6 @@ export class CriteriaBasedReportComponent implements OnInit {
   isMotorIdSelected: boolean;
   submitted: boolean;
   constructor(public formBuilder: FormBuilder, private apiService: ApiService, private dataService: DataServiceService, private toastr: ToastrService) { }
-
   ngOnInit() {
     this.percent.push("80");
     this.percent.push("70");
@@ -32,7 +31,7 @@ export class CriteriaBasedReportComponent implements OnInit {
     this.submitted = false;
     this.masterDataForm = this.formBuilder.group({
       percent: [''],
-      number:[''],
+      number: [''],
       type: ['', Validators.required],
     });
     this.checkLogin = this.apiService.getLoginClick();

@@ -15,22 +15,18 @@ export class MotorBasedReportComponent implements OnInit {
   isMotorIdSelected: boolean;
   constructor(private dataservice: DataServiceService, private apiService: ApiService, private router: Router) {
     this.dataservice.getAllMotorNamePlate().subscribe((res: any[]) => {
-      console.log(res);
       this.jsonData = res;
       this.checkLogin = apiService.getLoginClick();
       if (!this.checkLogin) {
         this.apiService.openModalWithComponent(LoginComponent);
       }
-
     });
   }
-     
   ngOnInit() {
     this.isMotorIdSelected = false;
   }
   submit(motorId: any) {
     this.isMotorIdSelected = true;
     this.apiService.setMotorId(motorId);
-    
   }
 }

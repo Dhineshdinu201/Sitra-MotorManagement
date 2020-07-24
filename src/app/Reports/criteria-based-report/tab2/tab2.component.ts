@@ -12,15 +12,10 @@ export class Tab2Component implements OnInit {
   jsonData: any;
   constructor(private apiService: ApiService, private dataService: DataServiceService) {
     this.masterData = this.apiService.getCriData();
-    console.log(this.masterData);
     this.jsonData = this.dataService.selectActiveMotor_failure_detailsDataCric(this.masterData).subscribe((res: any[]) => {
-      console.log(res);
       this.jsonData = res;
     });
   }
-
   ngOnInit() {
-
   }
-
 }

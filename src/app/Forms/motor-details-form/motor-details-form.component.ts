@@ -16,12 +16,12 @@ export class MotorDetailsFormComponent implements OnInit {
   isUpdate: boolean = false;
   spresp: any;
   motorIdValue: number;
+  public event: EventEmitter<any> = new EventEmitter();
   jsonData: any;
   jsonData2: any;
   jsonData3: any;
   Data: any = {};
   constructor(public formBuilder: FormBuilder, public dataservice: DataServiceService, public apiService: ApiService, public toastr: ToastrService) {
-
     this.dataservice.getActiveMotorNamePlate().subscribe((res: any[]) => {
       this.jsonData = res;
     });
@@ -32,13 +32,9 @@ export class MotorDetailsFormComponent implements OnInit {
       this.jsonData3 = res;
     });
     this.Data = this.apiService.getEditMasterData();
-    console.log(this.Data);
-
-
     if (this.Data == undefined) {
       this.Data = {};
     }
-
     this.apiService.setEditMasterData({});
 
     this.masterDataForm = this.formBuilder.group({
@@ -52,41 +48,41 @@ export class MotorDetailsFormComponent implements OnInit {
       motor_mac_coupling: ['', Validators.required],
       purchase_reason: ['', Validators.required],
       purchase_date: ['', Validators.required],
-
     });
-
   }
-
   ngOnInit() {
   }
   saveMasterData(departmentMaster: any) {
     this.submitted = true;
     if (!(this.masterDataForm.invalid)) {
       departmentMaster.custid = this.apiService.getCusId();
-    departmentMaster.Motor_Det_Id = this.Data.Motor_Det_Id
-    console.log(departmentMaster);
-    if (departmentMaster.Motor_Det_Id != null) {
-      this.submitted = true;
-      this.dataservice.updateMotorDetails(departmentMaster).subscribe(resp => {
-        if (resp == true) {
-          this.toastr.success("sucessfully Added")
-          this.apiService.closeModal();
-        }
-      });
+      departmentMaster.Motor_Det_Id = this.Data.Motor_Det_Id
+      if (departmentMaster.Motor_Det_Id != null) {
+        this.submitted = true;
+        this.dataservice.updateMotorDetails(departmentMaster).subscribe(resp => {
+          if (resp == true) {
+            this.toastr.success("sucessfully Added")
+            this.apiService.closeModal();
+            this.sendMessage(true);
+          }
+        });
+      } else {
+        departmentMaster.custid = this.apiService.getCusId();
+        this.submitted = true;
+        this.dataservice.addAllMotorDetails(departmentMaster).subscribe(resp => {
+          if (resp == true) {
+            this.toastr.success("sucessfully Added")
+            this.apiService.closeModal();
+            this.sendMessage(true);
+          }
+        });
+      }
     } else {
-      departmentMaster.custid = this.apiService.getCusId();
-      this.submitted = true;
-      this.dataservice.addAllMotorDetails(departmentMaster).subscribe(resp => {
-        if (resp == true) {
-          this.toastr.success("sucessfully Added")
-          this.apiService.closeModal();
-        }
-      });
-
+      this.toastr.error("Form Invalid")
     }
-  } else {
-  this.toastr.error("Form Invalid")
-}
+  }
+  sendMessage(popHide: boolean) {
+    this.event.emit(popHide);
   }
   get f() { return this.masterDataForm.controls; }
 }
