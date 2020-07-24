@@ -22,25 +22,15 @@ export class MotorNamePlateReportComponent implements OnInit {
   tableData: any;
     modalService: any;
   constructor(public dataservice: DataServiceService, private http: HttpClient, private router: Router, private apiservice: ApiService) {
-
     //get Department Master Data
-
     this.dataservice.getAllMotorNamePlate().subscribe((res: any[]) => {
-      console.log(res);
       this.jsonData = res;
-
-
     });
-   
   }
-
   onKey(event, newValue) {
-
     this.searchText = newValue;
-
   }
   ngOnInit() {
-
   }
  
 }

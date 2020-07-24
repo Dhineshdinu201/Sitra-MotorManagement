@@ -28,24 +28,14 @@ export class MotorEfficienyDetailsComponent implements OnInit {
   tableData: any;
   departmentMaster: { custid: any, Dept_code: any };
   bsModalRef: BsModalRef;
-
   constructor(public dataservice: DataServiceService, private http: HttpClient, private router: Router, private apiservice: ApiService, private modalService: BsModalService, private toastr: ToastrService) {
     this.dataservice.getMotorEfficiencyDetails().subscribe((res: any[]) => {
-      console.log(res);
       this.jsonData = res;
-
-
     });
-  
   }
   onKey(event, newValue) {
-
     this.searchText = newValue;
-
   }
-
-
   ngOnInit() {
   }
-
 }

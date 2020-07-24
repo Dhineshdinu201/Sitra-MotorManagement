@@ -17,7 +17,7 @@ export class DepartmentMasterFormComponent implements OnInit {
   popHide: boolean;
   isUpdate: boolean = false;
   spresp: any;
-  @Output() messageEvent = new EventEmitter<boolean>();
+  public event: EventEmitter<any> = new EventEmitter();
   Data: any = {};
   constructor(public formBuilder: FormBuilder, public dataservice: DataServiceService, public apiService: ApiService, public toastr: ToastrService) {
     this.masterDataForm = this.formBuilder.group({
@@ -25,24 +25,17 @@ export class DepartmentMasterFormComponent implements OnInit {
       Dept_Shrt_Name: ['', Validators.required],
     });
   }
-
   ngOnInit() {
-
     this.submitted = false;
-
     this.Data = this.apiService.getEditMasterData();
     if (this.Data == undefined) {
       this.Data = {};
-
     }
-
     this.apiService.setEditMasterData({});
   }
   saveMasterData(departmentMaster: any) {
-    debugger
     this.submitted = true;
     if (!(this.masterDataForm.invalid)) {
-
       departmentMaster.custid = this.apiService.getCusId();
       departmentMaster.Dept_Code = this.Data.Dept_Code
       if (departmentMaster.Dept_Code != null) {
@@ -51,7 +44,7 @@ export class DepartmentMasterFormComponent implements OnInit {
           if (resp == true) {
             this.toastr.success("sucessfully Added")
             this.apiService.closeModal();
-
+            this.sendMessage(true);
           }
         });
       } else {
@@ -61,9 +54,9 @@ export class DepartmentMasterFormComponent implements OnInit {
           if (resp == true) {
             this.toastr.success("sucessfully Added")
             this.apiService.closeModal();
+            this.sendMessage(true);
           }
         });
-
       }
     }
     else {
@@ -71,9 +64,7 @@ export class DepartmentMasterFormComponent implements OnInit {
     }
   }
   sendMessage(popHide: boolean) {
-    this.messageEvent.emit(popHide);
+    this.event.emit(popHide);
   }
-
   get f() { return this.masterDataForm.controls; }
-
 }

@@ -27,39 +27,31 @@ export class MakeMasterListComponent implements OnInit {
   tableData: any;
   bsModalRef: BsModalRef;
   constructor(public dataservice: DataServiceService, private http: HttpClient, private router: Router, private apiservice: ApiService, private modalService: BsModalService, private toastr: ToastrService) {
-
     //get Department Master Data
-
     this.dataservice.getAllMakeMasterData().subscribe((res: any[]) => {
-      console.log(res);
       this.jsonData = res;
-
-
     });
-    console.log(this.jsonData);
     this.checkLogin = apiservice.getLoginClick();
     if (!this.checkLogin) {
       this.apiservice.openModalWithComponent(LoginComponent);
     }
   }
-
   onKey(event, newValue) {
-
     this.searchText = newValue;
-
   }
   ngOnInit() {
-
+    this.getMotor();
+  }
+  getMotor(){
+    this.dataservice.getAllMakeMasterData().subscribe((res: any[]) => {
+      this.jsonData = res;
+    });
   }
   openModal(template: TemplateRef<any>, i,data) {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
     this.index = i;
     this.deleteData = data;
-    console.log(this.index);
-    console.log("i" + i);
   }
-
-
   confirm(): void {
     this.Delete(this.deleteData);
     this.message = 'Confirmed!';
@@ -91,7 +83,6 @@ export class MakeMasterListComponent implements OnInit {
       if (resp == true) {
         this.toastr.success("Deleted Successfully")
         this.dataservice.getAllMakeMasterData().subscribe((res: any[]) => {
-          console.log(res);
           this.jsonData = res;
         });
       }
@@ -108,9 +99,6 @@ export class MakeMasterListComponent implements OnInit {
     }
   }
   ngAfterViewChecked() {
-    this.dataservice.getAllMakeMasterData().subscribe((res: any[]) => {
-      console.log(res);
-      this.jsonData = res;
-    });
+    
   }
 }

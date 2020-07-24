@@ -39,13 +39,13 @@ export class FailureInformationComponent implements OnInit {
       this.apiservice.openModalWithComponent(LoginComponent);
     }
   }
-
   onKey(event, newValue) {
-
     this.searchText = newValue;
-
   }
   ngOnInit() {
+    this.getMotor();
+  }
+  getMotor(){
     this.dataservice.getAllMotorFailureDetailsData().subscribe((res: any[]) => {
       this.jsonData = res;
     });

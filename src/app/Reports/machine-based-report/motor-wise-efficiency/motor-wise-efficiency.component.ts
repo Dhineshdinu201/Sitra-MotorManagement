@@ -17,15 +17,11 @@ export class MotorWiseEfficiencyComponent implements OnInit {
   checkLogin: boolean;
   Mac_id: any;
   constructor(public dataservice: DataServiceService, private http: HttpClient, private router: Router, private apiservice: ApiService, private modalService: BsModalService, private toastr: ToastrService) {
-
     //get Department Master Data
     this.Mac_id = this.apiservice.getMachineId();
     this.dataservice.selectActiveMotor_failure_detailsData(this.Mac_id).subscribe((res: any[]) => {
-      console.log(res);
       this.jsonData = res;
     });
-
-    console.log(this.jsonData);
     this.checkLogin = apiservice.getLoginClick();
     if (!this.checkLogin) {
       // this.router.navigate(['/login']);
@@ -34,5 +30,4 @@ export class MotorWiseEfficiencyComponent implements OnInit {
   }
   ngOnInit() {
   }
-
 }

@@ -18,36 +18,24 @@ export class MotorNamePlateDetailsFormComponent implements OnInit {
   motorIdValue: number;
   jsonData: any;
   jsonData2: any;
-  @Output() messageEvent = new EventEmitter<boolean>();
+  public event: EventEmitter<any> = new EventEmitter();
   Data: any = "";
   constructor(public formBuilder: FormBuilder, public dataservice: DataServiceService, private apiService: ApiService, public toastr: ToastrService) {
-
     this.dataservice.selectActiveMakeData().subscribe((res: any[]) => {
       this.jsonData = res;
     });
     this.dataservice.getAllMotorTypeData().subscribe((res: any[]) => {
       this.jsonData2 = res;
     });
-
     this.Data = this.apiService.getEditMasterData();
     console.log(this.Data);
-
-
     if (this.Data == undefined) {
       this.Data = {};
 
     }
-
     this.apiService.setEditMasterData({});
-
-    
-
-
-
   }
-
   ngOnInit() {
-
     this.submitted = false;
     this.masterDataForm = this.formBuilder.group({
       Motor_Name: [this.Data.Motor_Name, Validators.required],
@@ -81,8 +69,6 @@ export class MotorNamePlateDetailsFormComponent implements OnInit {
     });
 
   }
-
-
   saveMasterData(departmentMaster: any) {
     this.submitted = true;
     if (!(this.masterDataForm.invalid)) {
@@ -95,6 +81,7 @@ export class MotorNamePlateDetailsFormComponent implements OnInit {
         if (resp == true) {
           this.toastr.success("sucessfully Added")
           this.apiService.closeModal();
+          this.sendMessage(true);
         }
       });
     } else {
@@ -104,6 +91,7 @@ export class MotorNamePlateDetailsFormComponent implements OnInit {
         if (resp == true) {
           this.toastr.success("sucessfully Added")
           this.apiService.closeModal();
+          this.sendMessage(true);
         }
       });
 
@@ -113,7 +101,7 @@ export class MotorNamePlateDetailsFormComponent implements OnInit {
     }
   }
   sendMessage(popHide: boolean) {
-    this.messageEvent.emit(popHide);
+    this.event.emit(popHide);
   }
   get f() { return this.masterDataForm.controls; }
 

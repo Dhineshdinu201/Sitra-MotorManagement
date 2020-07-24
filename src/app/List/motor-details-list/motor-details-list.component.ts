@@ -27,16 +27,10 @@ export class MotorDetailsListComponent implements OnInit {
   tableData: any;
   bsModalRef: BsModalRef;
   constructor(public dataservice: DataServiceService, private http: HttpClient, private router: Router, private apiservice: ApiService, private modalService: BsModalService, private toastr: ToastrService) {
-
     //get Department Master Data
-
     this.dataservice.getAllMotorDetails().subscribe((res: any[]) => {
-      console.log(res);
       this.jsonData = res;
-
-
     });
-    console.log(this.jsonData);
     this.checkLogin = apiservice.getLoginClick();
     if (!this.checkLogin) {
       this.apiservice.openModalWithComponent(LoginComponent);
@@ -44,12 +38,15 @@ export class MotorDetailsListComponent implements OnInit {
   }
 
   onKey(event, newValue) {
-
     this.searchText = newValue;
-
   }
   ngOnInit() {
-
+    this.getMotor();
+  }
+  getMotor(){
+    this.dataservice.getAllMotorDetails().subscribe((res: any[]) => {
+      this.jsonData = res;
+    });
   }
   openMotor() {
     if (this.apiservice.getCusId() != null) {
@@ -67,11 +64,7 @@ export class MotorDetailsListComponent implements OnInit {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
     this.index = i;
     this.deleteData = data;
-    console.log(this.index);
-    console.log("i" + i);
   }
-
-
   confirm(): void {
     this.message = 'Confirmed!';
     this.Delete(this.deleteData);
@@ -113,7 +106,6 @@ export class MotorDetailsListComponent implements OnInit {
       if (resp == true) {
         this.toastr.success("Calculated Successfully")
         this.dataservice.getAllMotorDetails().subscribe((res: any[]) => {
-          console.log(res);
           this.jsonData = res;
         });
       }
@@ -130,9 +122,6 @@ export class MotorDetailsListComponent implements OnInit {
     }
   }
   ngAfterViewChecked() {
-    this.dataservice.getAllMotorDetails().subscribe((res: any[]) => {
-      console.log(res);
-      this.jsonData = res;
-    });
+    
   }
 }

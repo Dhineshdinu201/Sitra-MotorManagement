@@ -23,28 +23,15 @@ export class MotorDetailReportComponent implements OnInit {
   deleteData: any;
   index: number;
   tableData: any;
- 
   constructor(public dataservice: DataServiceService, private http: HttpClient, private router: Router, private apiservice: ApiService, private modalService: BsModalService, private toastr: ToastrService) {
-
     //get Department Master Data
-
     this.dataservice.getAllMotorDetails().subscribe((res: any[]) => {
-      console.log(res);
       this.jsonData = res;
-
-
     });
-    
   }
-
   onKey(event, newValue) {
-
     this.searchText = newValue;
-
   }
   ngOnInit() {
-
   }
-  
-  
 }

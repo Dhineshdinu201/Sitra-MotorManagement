@@ -8,11 +8,9 @@ import { ToastrService } from 'ngx-toastr';
 export class AppComponent {
   isCollapsed: boolean;
   constructor(private toastr: ToastrService) {
-    
   }
   receiveMessage($event) {
     this.isCollapsed = $event
-    console.log(this.isCollapsed);
   }
   showSuccess() {
     this.toastr.success('Hello world!', 'Toastr fun!');

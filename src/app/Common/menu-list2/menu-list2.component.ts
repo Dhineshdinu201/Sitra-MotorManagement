@@ -8,7 +8,6 @@ import { ApiService } from '../api.service';
   styleUrls: ['./menu-list2.component.css']
 })
 export class MenuList2Component implements OnInit {
-
   masterData: string[] = [];
   motorMasterData: string[] = [];
   motorTechnicalDetails: string[] = [];
@@ -21,12 +20,10 @@ export class MenuList2Component implements OnInit {
   selectedMasterData: number = null;
   selectedMotorMasterData: number = null;
   selectedMotorTech: number = null;
-
   isMenu1: boolean = false;
   isMenu2: boolean = false;
   isMenu3: boolean = false;
   isMenu4: boolean = false;
-
   constructor(private router: Router, private apiService: ApiService) {
       this.masterData.push("Deparment");
       this.masterData.push("Make");
@@ -43,26 +40,19 @@ export class MenuList2Component implements OnInit {
       this.motorTechnicalDetails.push("No Load Power Measurements");
       this.motorTechnicalDetails.push("Full Load Measurements");
 
-
-
       this.Reports.push("Motor based report");
       this.Reports.push("Machine based report");
       this.Reports.push("Criteria based query report ");
       this.Reports.push("Motor change report");
       this.Reports.push("Motor failure report");
     }
-
     ngOnInit() {
-     
     }
   clickMotorTech(index) {
     this.isMenu1 = false;
     this.isMenu2 = false;
     this.isMenu3 = true;
     this.isMenu4 = false;
-
-
-
     this.selectedMotorTech = index;
     this.apiService.isMenuClick = true;
     //this.messageEvent.emit(true);
@@ -90,10 +80,6 @@ export class MenuList2Component implements OnInit {
     this.isMenu2 = false;
     this.isMenu3 = false;
     this.isMenu4 = false;
-
-
-
-
     this.selectedMotorTech = index;
     this.apiService.isMenuClick = true;
     //this.messageEvent.emit(true);
@@ -126,8 +112,6 @@ export class MenuList2Component implements OnInit {
     this.isMenu2 = true;
     this.isMenu3 = false;
     this.isMenu4 = false;
-
-
     this.selectedMotorTech = index;
     this.apiService.isMenuClick = true;
     //this.messageEvent.emit(true);
@@ -142,7 +126,6 @@ export class MenuList2Component implements OnInit {
       this.router.navigate(['/MotorDetailsList']);
     }
   }
-
   motorFailure() {
     //this.selectedMotorTech = index;
     this.apiService.isMenuClick = true;
@@ -184,9 +167,6 @@ export class MenuList2Component implements OnInit {
     this.isMenu2 = false;
     this.isMenu3 = false;
     this.isMenu4 = true;
-
-
-
     window.scroll(0, 0);
     this.selectedMotorTech = index;
     this.apiService.isMenuClick = true;

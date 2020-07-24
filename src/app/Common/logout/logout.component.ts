@@ -7,16 +7,12 @@ import { ApiService } from '../api.service';
   styleUrls: ['./logout.component.css']
 })
 export class LogoutComponent implements OnInit {
-
   constructor(public toastr: ToastrService, public apiservice: ApiService) { }
-
   ngOnInit() {
     this.apiservice.setName("");
     this.showSuccess();
-
   }
   showSuccess() {
     this.toastr.success('Motor Management!', 'Logout Success!');
   }
-
 }

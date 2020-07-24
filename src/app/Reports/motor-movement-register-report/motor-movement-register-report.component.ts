@@ -16,19 +16,15 @@ export class MotorMovementRegisterReportComponent implements OnInit {
   isSubmitted: boolean = false;
   toDate: any;
   constructor(public dataservice: DataServiceService, private apiservice: ApiService, private toastr: ToastrService) {
-
     this.checkLogin = this.apiservice.getLoginClick();
     if (!this.checkLogin) {
       this.apiservice.openModalWithComponent(LoginComponent);
     }
   }
-
   ngOnInit() {
     this.fromDate = new Date();
   }
   submit() {
-    console.log(this.fromDate);
-    console.log(this.toDate);
     this.isSubmitted = true;
     if (this.fromDate == undefined && this.toDate == undefined) {
       this.toastr.error("Input invalid");
@@ -37,10 +33,7 @@ export class MotorMovementRegisterReportComponent implements OnInit {
     else {
       let data = { 'fromdate': this.fromDate, 'todate': this.toDate }
       this.dataservice.getAllMotorMovementRegisterDataCric(data).subscribe((res: any[]) => {
-        console.log(res);
         this.jsonData = res;
-
-
       });
     }
   }

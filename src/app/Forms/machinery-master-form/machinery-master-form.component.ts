@@ -17,8 +17,8 @@ export class MachineryMasterFormComponent implements OnInit {
   jsonData: any=null;
   jsonData2: any=null;
   isUpdate: boolean = false;
+  public event: EventEmitter<any> = new EventEmitter();
   spresp: any;
-  @Output() messageEvent = new EventEmitter<boolean>();
   Data: any = {};
   constructor(public formBuilder: FormBuilder, public dataservice: DataServiceService, public apiService: ApiService, public toastr: ToastrService) {
     this.dataservice.getAllDepartmentMasterData().subscribe((res: any[]) => {
@@ -27,13 +27,10 @@ export class MachineryMasterFormComponent implements OnInit {
     this.dataservice.selectActiveMakeData().subscribe((res: any[]) => {
       this.jsonData2 = res;
     });
-
     this.Data = this.apiService.getEditMasterData();
     if (this.Data == undefined) {
       this.Data = {};
-     
     }
-
     this.apiService.setEditMasterData({});
     this.masterDataForm = this.formBuilder.group({
       Mac_Name: ['', Validators.required],
@@ -45,14 +42,10 @@ export class MachineryMasterFormComponent implements OnInit {
       Mac_QR_Code: ['', Validators.required],
     });
   }
-
   ngOnInit() {
-
     this.submitted = false;
-
   }
   saveMasterData(departmentMaster: any) {
-    debugger
     this.submitted = true;
     if (!(this.masterDataForm.invalid)) {
       departmentMaster.custid = this.apiService.getCusId();
@@ -63,7 +56,7 @@ export class MachineryMasterFormComponent implements OnInit {
         if (resp == true) {
           this.toastr.success("sucessfully Added")
           this.apiService.closeModal();
-
+          this.sendMessage(true);
         }
       });
     } else {
@@ -73,18 +66,16 @@ export class MachineryMasterFormComponent implements OnInit {
         if (resp == true) {
           this.toastr.success("sucessfully Added")
           this.apiService.closeModal();
+          this.sendMessage(true);
         }
       });
-
     }
     } else {
       this.toastr.error("Form Invalid")
     }
   }
   sendMessage(popHide: boolean) {
-    this.messageEvent.emit(popHide);
+    this.event.emit(popHide);
   }
-
   get f() { return this.masterDataForm.controls; }
-
 }

@@ -8,9 +8,7 @@ import { ApiService } from '../../Common/api.service';
 })
 export class MakeMasterViewComponent implements OnInit {
   d: any = {};
-
   constructor(public apiService: ApiService) { }
-
   ngOnInit() {
     this.d = this.apiService.getEditMasterData();
     if (this.d == undefined) {
@@ -18,5 +16,4 @@ export class MakeMasterViewComponent implements OnInit {
     }
     this.apiService.setEditMasterData({});
   }
-
 }

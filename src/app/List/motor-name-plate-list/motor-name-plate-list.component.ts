@@ -27,37 +27,31 @@ export class MotorNamePlateListComponent implements OnInit {
   bsModalRef: BsModalRef;
   modalRef: BsModalRef;
   constructor(public dataservice: DataServiceService, private http: HttpClient, private router: Router, private apiservice: ApiService, private modalService: BsModalService, private toastr: ToastrService) {
-
     //get Department Master Data
-
     this.dataservice.getAllMotorNamePlate().subscribe((res: any[]) => {
-      console.log(res);
       this.jsonData = res;
     });
-    console.log(this.jsonData);
     this.checkLogin = apiservice.getLoginClick();
     if (!this.checkLogin) {
       this.apiservice.openModalWithComponent(LoginComponent);
     }
   }
-
   onKey(event, newValue) {
-
     this.searchText = newValue;
-
   }
   ngOnInit() {
-
+    this.getMotor();
+  }
+  getMotor(){
+    this.dataservice.getAllMotorNamePlate().subscribe((res: any[]) => {
+      this.jsonData = res;
+    });
   }
   openModal(template: TemplateRef<any>, i,data) {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
     this.index = i;
     this.deleteData = data;
-    console.log(this.index);
-    console.log("i" + i);
   }
-
-
   confirm(): void {
     this.message = 'Confirmed!';
     this.Delete(this.deleteData);
@@ -67,7 +61,6 @@ export class MotorNamePlateListComponent implements OnInit {
   decline(): void {
     this.message = 'Declined!';
     this.modalRef.hide();
-
   }
   Add() {
     this.apiservice.openModalWithComponent(MotorNamePlateDetailsFormComponent);
@@ -92,7 +85,6 @@ export class MotorNamePlateListComponent implements OnInit {
         });
       }
     });
-
   }
   View(data) {
     this.apiservice.setEditMasterData(data);
@@ -105,9 +97,6 @@ export class MotorNamePlateListComponent implements OnInit {
     }
   }
   ngAfterViewChecked() {
-    this.dataservice.getAllMotorNamePlate().subscribe((res: any[]) => {
-      console.log(res);
-      this.jsonData = res;
-    });
+    
   }
 }

@@ -7,7 +7,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 })
 export class ApiService {
   isLogin: boolean = false;
-  bsModalRef: BsModalRef;
+  public bsModalRef: BsModalRef;
   editMasterData: any;
   motorId: any;
   name: string;

@@ -15,7 +15,6 @@ import { ApiService } from '../api.service';
 export class AppHeaderComponent implements OnInit {
   modalRef: BsModalRef;
   message: string;
-  
   isCollapsed = false;
   searchText: string;
   name: string;
@@ -23,14 +22,10 @@ export class AppHeaderComponent implements OnInit {
   @Input() title: string;
   @Output() messageEvent = new EventEmitter<boolean>();
   constructor(public modalService: BsModalService, private toastr: ToastrService, private apiservice: ApiService, private dataService: DataServiceService) { }
- 
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
-    
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' }); 
   }
-
   isMenuOpen() {
-    
     this.isCollapsed = !this.isCollapsed;
     this.messageEvent.emit(this.isCollapsed);
   }
@@ -46,7 +41,6 @@ export class AppHeaderComponent implements OnInit {
     this.modalRef.hide();
     this.toastr.error('Motor Management!', 'Logoutsucessfull');
   }
-
   async openModalWithComponent() {
     this.apiservice.openModalWithComponent(LoginComponent);
   }
@@ -55,7 +49,6 @@ export class AppHeaderComponent implements OnInit {
     this.messageEvent.emit(this.isCollapsed);
   }
   ngOnInit() {
-   
   }
   ngAfterViewChecked() {
     this.name = this.apiservice.getName();

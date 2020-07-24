@@ -26,27 +26,15 @@ export class NoLoadPowerMeasurementReportComponent implements OnInit {
   tableData: any;
   bsModalRef: BsModalRef;
   constructor(public dataservice: DataServiceService, private http: HttpClient, private router: Router, private apiservice: ApiService, private modalService: BsModalService, private toastr: ToastrService) {
-
     //get Department Master Data
-
     this.dataservice.getAllNoLoadPowerMeasurementsDataModel().subscribe((res: any[]) => {
-      console.log(res);
       this.jsonData = res;
-
-
     });
-    console.log(this.jsonData);
-    
   }
-
   onKey(event, newValue) {
-
     this.searchText = newValue;
-
   }
   ngOnInit() {
-
   }
-
 }
 

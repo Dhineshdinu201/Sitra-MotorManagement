@@ -22,16 +22,12 @@ export class LoginComponent implements OnInit {
   constructor(private dataservice: DataServiceService,private apiservice: ApiService,private toastr: ToastrService) {
    }
   onSubmit() {
-    
     this.body = 'username='+this.uname
     +'&password='+this.psw;
     this.login();
-    
   }
   ngOnInit() {
   }
-
- 
   login() {
     debugger;
     this.spresp=[];
@@ -53,5 +49,4 @@ export class LoginComponent implements OnInit {
         return this.spresp.push(resp);
       });
   }
-  
 }
