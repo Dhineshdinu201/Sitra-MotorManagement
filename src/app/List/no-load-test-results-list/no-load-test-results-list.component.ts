@@ -27,37 +27,31 @@ export class NoLoadTestResultsListComponent implements OnInit {
   deleteData: any;
   bsModalRef: BsModalRef;
   constructor(public dataservice: DataServiceService, private http: HttpClient, private router: Router, private apiservice: ApiService, private modalService: BsModalService, private toastr: ToastrService) {
-
     //get Department Master Data
-
     this.dataservice.getAllActiveNoLoadTestResultsData().subscribe((res: any[]) => {
-      console.log(res);
       this.jsonData = res;
     });
-    console.log(this.jsonData);
     this.checkLogin = apiservice.getLoginClick();
     if (!this.checkLogin) {
       this.apiservice.openModalWithComponent(LoginComponent);
     }
   }
-
   onKey(event, newValue) {
-
     this.searchText = newValue;
-
   }
   ngOnInit() {
-
+    this.getMotor();
+  }
+  getMotor(){
+    this.dataservice.getAllActiveNoLoadTestResultsData().subscribe((res: any[]) => {
+      this.jsonData = res;
+    });
   }
   openModal(template: TemplateRef<any>, i,data) {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
     this.index = i;
     this.deleteData = data;
-    console.log(this.index);
-    console.log("i" + i);
   }
-
-
   confirm(): void {
     this.message = 'Confirmed!';
     this.Delete(this.deleteData);
@@ -67,7 +61,6 @@ export class NoLoadTestResultsListComponent implements OnInit {
   decline(): void {
     this.message = 'Declined!';
     this.modalRef.hide();
-
   }
   Add() {
     this.apiservice.openModalWithComponent(NoLoadTestResultsFormComponent);
@@ -87,12 +80,10 @@ export class NoLoadTestResultsListComponent implements OnInit {
       if (resp == true) {
         this.toastr.success("Deleted Successfully")
         this.dataservice.getAllActiveNoLoadTestResultsData().subscribe((res: any[]) => {
-          console.log(res);
           this.jsonData = res;
         });
       }
     });
-
   }
   View(data) {
     this.apiservice.setEditMasterData(data);
@@ -105,9 +96,6 @@ export class NoLoadTestResultsListComponent implements OnInit {
     }
   }
   ngAfterViewChecked() {
-    this.dataservice.getAllActiveNoLoadTestResultsData().subscribe((res: any[]) => {
-      console.log(res);
-      this.jsonData = res;
-    });
+    
   }
 }

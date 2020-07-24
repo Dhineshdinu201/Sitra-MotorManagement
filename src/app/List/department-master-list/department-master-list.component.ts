@@ -55,6 +55,9 @@ p:any;
   
 }
   ngOnInit() {
+   this.getMotor();
+  }
+  getMotor(){
     this.dataservice.getAllDepartmentMasterData().subscribe((res: any[]) => {
       this.jsonData = res;
       this.isLogin = this.apiservice.getLoginClick();
@@ -66,8 +69,6 @@ p:any;
     this.index = i;
     this.deleteData = data;
   }
- 
- 
   confirm(): void {
     this.message = 'Confirmed!';
     this.Delete(this.deleteData);
@@ -75,8 +76,7 @@ p:any;
   }
   decline(): void {
     this.message = 'Declined!';
-    this.modalRef.hide();
-    
+    this.modalRef.hide(); 
   }
   Add() {
     this.apiservice.openModalWithComponent(DepartmentMasterFormComponent);
@@ -114,9 +114,6 @@ p:any;
       this.bsModalRef.hide;
     }
   }
-
   ngAfterViewChecked(){
-   
   }
-
 }
