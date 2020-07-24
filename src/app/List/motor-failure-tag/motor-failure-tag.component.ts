@@ -27,37 +27,32 @@ export class MotorFailureTagComponent implements OnInit {
   tableData: any;
   bsModalRef: BsModalRef;
   constructor(public dataservice: DataServiceService, private http: HttpClient, private router: Router, private apiservice: ApiService, private modalService: BsModalService, private toastr: ToastrService) {
-
     //get Department Master Data
-
     this.dataservice.getAllMotorFailureTagData().subscribe((res: any[]) => {
-      console.log(res);
       this.jsonData = res;
     });
-    console.log(this.jsonData);
     this.checkLogin = apiservice.getLoginClick();
     if (!this.checkLogin) {
       this.apiservice.openModalWithComponent(LoginComponent);
     }
   }
-
   onKey(event, newValue) {
-
     this.searchText = newValue;
-
   }
   ngOnInit() {
-
+    this.getMotor();
+  }
+  getMotor(){
+    this.dataservice.getAllMotorFailureTagData().subscribe((res: any[]) => {
+      console.log(res);
+      this.jsonData = res;
+    });
   }
   openModal(template: TemplateRef<any>, i,data) {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
     this.index = i;
     this.deleteData = data;
-    console.log(this.index);
-    console.log("i" + i);
   }
-
-
   confirm(): void {
     this.message = 'Confirmed!';
     this.Delete(this.deleteData);
@@ -87,12 +82,10 @@ export class MotorFailureTagComponent implements OnInit {
       if (resp == true) {
         this.toastr.success("Deleted Successfully")
         this.dataservice.getAllMotorFailureTagData().subscribe((res: any[]) => {
-          console.log(res);
           this.jsonData = res;
         });
       }
     });
-
   }
   View(data) {
     this.apiservice.setEditMasterData(data);
@@ -105,9 +98,5 @@ export class MotorFailureTagComponent implements OnInit {
     }
   }
   ngAfterViewChecked() {
-    this.dataservice.getAllMotorFailureTagData().subscribe((res: any[]) => {
-      console.log(res);
-      this.jsonData = res;
-    });
   }
 }

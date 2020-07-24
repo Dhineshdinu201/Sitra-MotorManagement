@@ -27,13 +27,9 @@ export class MachineryMasterListComponent implements OnInit {
   index:number;
   bsModalRef: BsModalRef;
   constructor(public dataservice: DataServiceService,private http: HttpClient,private router: Router,private apiservice: ApiService,private modalService: BsModalService,private toastr: ToastrService) {  this.getJSON().subscribe(data => {
-    console.log(data);
     this.jsonData = data;
     this.dataservice.getAllMachineryMasterData().subscribe((res: any[]) => {
-      console.log(res);
       this.jsonData = res;
-
-
     });
     this.checkLogin=apiservice.getLoginClick();
     if(!this.checkLogin){
@@ -44,23 +40,22 @@ export class MachineryMasterListComponent implements OnInit {
  public getJSON(): Observable<any> {
    return this.http.get(this._jsonURL);
  }
-
  onKey(event, newValue){
-  console.log(newValue);
   this.searchText=newValue;
-  console.log(event.key)
 }
   ngOnInit() {
+   this.getMotor();
+  }
+  getMotor(){
+    this.dataservice.getAllMachineryMasterData().subscribe((res: any[]) => {
+      this.jsonData = res;
+    });
   }
   openModal(template: TemplateRef<any>,i,data) {
     this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
     this.index = i;
     this.deleteData = data;
-    console.log(this.index);
-    console.log("i"+i);
   }
- 
- 
   confirm(): void {
     this.message = 'Confirmed!';
     this.Delete(this.deleteData);
@@ -69,8 +64,7 @@ export class MachineryMasterListComponent implements OnInit {
   }
   decline(): void {
     this.message = 'Declined!';
-    this.modalRef.hide();
-    
+    this.modalRef.hide(); 
   }
   Add() {
     this.apiservice.openModalWithComponent(MachineryMasterFormComponent);
@@ -90,7 +84,6 @@ Delete(data){
     if (resp == true) {
       this.toastr.success("Deleted Successfully")
       this.dataservice.getAllMachineryMasterData().subscribe((res: any[]) => {
-        console.log(res);
         this.jsonData = res;
       });
     }
@@ -107,9 +100,6 @@ View(data){
     }
   }
   ngAfterViewChecked() {
-    this.dataservice.getAllMachineryMasterData().subscribe((res: any[]) => {
-      console.log(res);
-      this.jsonData = res;
-    });
+    
   }
 }
