@@ -25,7 +25,7 @@ export class MotorWiseEfficiencyComponent implements OnInit {
     this.checkLogin = apiservice.getLoginClick();
     if (!this.checkLogin) {
       // this.router.navigate(['/login']);
-      this.apiservice.openModalWithComponent(LoginComponent);
+      this.apiservice.openModalWithLoginComponent(LoginComponent);
     }
   }
   ngOnInit() {

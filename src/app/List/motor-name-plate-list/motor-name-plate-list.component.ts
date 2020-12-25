@@ -8,6 +8,7 @@ import { ApiService } from '../../Common/api.service';
 import { MotorNamePlateDetailsFormComponent } from '../../Forms/motor-name-plate-details-form/motor-name-plate-details-form.component';
 import { MotorNamePlateDetailsViewComponent } from '../../Views/motor-name-plate-details-view/motor-name-plate-details-view.component';
 import { LoginComponent } from '../../Common/login/login.component';
+import { QRPopComponentComponent } from '../../Common/qrpop-component/qrpop-component.component';
 
 @Component({
   selector: 'app-motor-name-plate-list',
@@ -33,7 +34,7 @@ export class MotorNamePlateListComponent implements OnInit {
     });
     this.checkLogin = apiservice.getLoginClick();
     if (!this.checkLogin) {
-      this.apiservice.openModalWithComponent(LoginComponent);
+      this.apiservice.openModalWithLoginComponent(LoginComponent);
     }
   }
   onKey(event, newValue) {
@@ -68,6 +69,12 @@ export class MotorNamePlateListComponent implements OnInit {
   Edit(data) {
     this.apiservice.setEditMasterData(data);
     this.apiservice.openModalWithComponent(MotorNamePlateDetailsFormComponent);
+  }
+  generateQRCode(data) {
+    const initialState = {
+      value:data
+    };
+    this.apiservice.openModalWithComponentData(QRPopComponentComponent, initialState);
   }
   Delete(data) {
     let code = data.Motor_Id;

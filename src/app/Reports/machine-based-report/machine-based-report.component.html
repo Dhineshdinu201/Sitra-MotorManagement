@@ -1,13 +1,11 @@
-<div style="margin-left:100px;">
-  <p>Select Machine </p>
+<div style="margin-top:10px;">
+  <a>Select Machine </a>
   <select #machineModel>
     <option *ngFor="let d of jsonData" [ngValue]="d.Mac_Id">{{d.Mac_Name}}</option>
   </select>
   <a class="view" style="padding:5px;color:white;margin-left:20px;" (click)="submit(machineModel.value)">Submit</a>
 </div>
 <br/>
-<br />
-<br />
 <br />
 <tabset *ngIf="isMotorIdSelected">
   <tab heading="Name plate details " id="tab1"><app-motor-wise-failure></app-motor-wise-failure></tab>

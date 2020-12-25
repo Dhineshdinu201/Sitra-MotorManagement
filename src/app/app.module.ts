@@ -12,6 +12,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { AccordionModule } from 'ngx-bootstrap';
 import { CollapseModule } from 'ngx-bootstrap';
+import { QRCodeModule } from 'angularx-qrcode';
 
 import { DepartmentMasterViewComponent } from './Views/department-master-view/department-master-view.component';
 import { MakeMasterViewComponent } from './Views/make-master-view/make-master-view.component';
@@ -83,6 +84,7 @@ import { MotorMovementRegisterReportComponent } from './Reports/motor-movement-r
 import { MotorFailureReportComponent } from './Reports/motor-failure-report/motor-failure-report.component';
 import { UserComponent } from './Common/user/user.component';
 import { MenuList2Component } from './Common/menu-list2/menu-list2.component';
+import { QRPopComponentComponent } from './Common/qrpop-component/qrpop-component.component';
 
 @NgModule({
   declarations: [
@@ -153,6 +155,7 @@ import { MenuList2Component } from './Common/menu-list2/menu-list2.component';
     MotorFailureReportComponent,
     UserComponent,
     MenuList2Component,
+    QRPopComponentComponent,
   ],
   imports: [
     BrowserModule,
@@ -164,6 +167,7 @@ import { MenuList2Component } from './Common/menu-list2/menu-list2.component';
     Ng2SearchPipeModule,
     HttpClientModule,
     AppRoutingModule,
+    QRCodeModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), ModalModule.forRoot(), BsDropdownModule.forRoot(), TabsModule.forRoot()
   ],
@@ -199,7 +203,8 @@ import { MenuList2Component } from './Common/menu-list2/menu-list2.component';
     MotorBurntOutReasonsMasterFormComponent,
     FailureInformationFormComponent,
     MotorMovementRegisterFormComponent,
-    MachineryMasterFormComponent
+    MachineryMasterFormComponent,
+    QRPopComponentComponent
   ],
   bootstrap: [AppComponent]
 })

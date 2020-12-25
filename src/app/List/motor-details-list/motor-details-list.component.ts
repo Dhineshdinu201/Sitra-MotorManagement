@@ -33,7 +33,7 @@ export class MotorDetailsListComponent implements OnInit {
     });
     this.checkLogin = apiservice.getLoginClick();
     if (!this.checkLogin) {
-      this.apiservice.openModalWithComponent(LoginComponent);
+      this.apiservice.openModalWithLoginComponent(LoginComponent);
     }
   }
 
