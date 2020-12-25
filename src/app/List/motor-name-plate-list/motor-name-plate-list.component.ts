@@ -71,6 +71,7 @@ export class MotorNamePlateListComponent implements OnInit {
     this.apiservice.openModalWithComponent(MotorNamePlateDetailsFormComponent);
   }
   generateQRCode(data) {
+    data['type'] = "motor";
     const initialState = {
       value:data
     };
