@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\Common",
+    "\\app\\Common\\app-header",
+    "\\app\\Common\\login",
+    "\\app\\Common\\logout",
+    "\\app\\Common\\menu-list",
+    "\\app\\Common\\menu-list2",
+    "\\app\\Common\\user"
+  ],
+  "SelectedNode": "\\app\\List",
+  "PreviewInSolutionExplorer": false
+}

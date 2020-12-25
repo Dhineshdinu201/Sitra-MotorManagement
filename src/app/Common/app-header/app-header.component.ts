@@ -42,7 +42,7 @@ export class AppHeaderComponent implements OnInit {
     this.toastr.error('Motor Management!', 'Logoutsucessfull');
   }
   async openModalWithComponent() {
-    this.apiservice.openModalWithComponent(LoginComponent);
+    this.apiservice.openModalWithLoginComponent(LoginComponent);
   }
   receiveMessage($event) {
     this.isCollapsed = $event

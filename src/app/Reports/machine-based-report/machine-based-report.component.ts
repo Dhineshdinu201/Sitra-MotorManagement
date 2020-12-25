@@ -19,7 +19,7 @@ export class MachineBasedReportComponent implements OnInit {
     });
     this.checkLogin = apiService.getLoginClick();
     if (!this.checkLogin) {
-      this.apiService.openModalWithComponent(LoginComponent);
+      this.apiService.openModalWithLoginComponent(LoginComponent);
     }
   }
   ngOnInit() {

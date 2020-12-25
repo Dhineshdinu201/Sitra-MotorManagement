@@ -36,7 +36,7 @@ export class CriteriaBasedReportComponent implements OnInit {
     });
     this.checkLogin = this.apiService.getLoginClick();
     if (!this.checkLogin) {
-      this.apiService.openModalWithComponent(LoginComponent);
+      this.apiService.openModalWithLoginComponent(LoginComponent);
     }
   }
   saveMasterData(departmentMaster: any) {

@@ -19,7 +19,7 @@ export class MotorFailureReportComponent implements OnInit {
   constructor(public dataservice: DataServiceService, private apiservice: ApiService, private toastr: ToastrService) {
     this.checkLogin = this.apiservice.getLoginClick();
     if (!this.checkLogin) {
-      this.apiservice.openModalWithComponent(LoginComponent);
+      this.apiservice.openModalWithLoginComponent(LoginComponent);
     }
   }
   ngOnInit() {

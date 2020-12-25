@@ -41,18 +41,25 @@ export class ApiService {
     return this.name;
   }
   openModalWithComponent(LoginComponent: any) {
-    
-    
-    if (LoginComponent == LoginComponent) {
-      this.bsModalRef = this.modalService.show(LoginComponent, this.loginConfig);
-    }
-    else {
-      this.bsModalRef = this.modalService.show(LoginComponent, this.config);
-    }
-
+    this.bsModalRef = this.modalService.show(LoginComponent, this.config);
   }
+  openModalWithComponentData(LoginComponent: any, data: object) {
+    let dataConfig = {
+      backdrop: true,
+      ignoreBackdropClick: true,
+      keyboard: true,
+      class: 'gray modal-sm',
+      initialState:data,
+    };
+    this.bsModalRef = this.modalService.show(LoginComponent, dataConfig);
+  }
+
+  openModalWithLoginComponent(LoginComponent: any) {
+    this.bsModalRef = this.modalService.show(LoginComponent, this.loginConfig);
+  }
+
   openLogin() {
-    
+
     this.bsModalRef.content.closeBtnName = 'Close';
   }
   closeModal() {

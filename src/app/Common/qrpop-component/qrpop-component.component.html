@@ -1,0 +1,16 @@
+<div #screen> 
+
+  <h1 style="text-align:center">{{value.Motor_Name}}</h1>
+
+  <div style="align-content:center">
+    <qrcode [qrdata]="data" [width]="256" [errorCorrectionLevel]="'M'" [elementType]="'svg'"></qrcode>
+  </div>
+</div>
+
+<div>
+  <button (click)="downloadQRCode()">Download</button>
+</div>
+<div id="download" style="visibility:collapse;width:0px;height:0px;">
+  <img #canvas>
+  <a #downloadLink></a>
+</div>

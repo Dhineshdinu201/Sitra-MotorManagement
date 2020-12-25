@@ -18,7 +18,7 @@ export class MotorBasedReportComponent implements OnInit {
       this.jsonData = res;
       this.checkLogin = apiService.getLoginClick();
       if (!this.checkLogin) {
-        this.apiService.openModalWithComponent(LoginComponent);
+        this.apiService.openModalWithLoginComponent(LoginComponent);
       }
     });
   }

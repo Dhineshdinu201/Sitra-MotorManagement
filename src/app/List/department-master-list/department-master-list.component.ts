@@ -44,7 +44,7 @@ p:any;
     this.checkLogin=apiservice.getLoginClick();
     if(!this.checkLogin){
       // this.router.navigate(['/login']);
-      this.apiservice.openModalWithComponent(LoginComponent);
+      this.apiservice.openModalWithLoginComponent(LoginComponent);
     }
     this.checkLogin = true;
  }

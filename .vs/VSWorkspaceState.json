@@ -3,13 +3,9 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\Common",
-    "\\src\\app\\Common\\menu-list",
-    "\\src\\app\\Common\\menu-list2",
-    "\\src\\app\\Reports",
-    "\\src\\app\\Reports\\machine-based-report",
-    "\\src\\app\\Reports\\machine-based-report\\motor-wise-failure",
-    "\\src\\app\\Reports\\motor-failure-report"
+    "\\src\\app\\List",
+    "\\src\\app\\List\\machinery-master-list"
   ],
+  "SelectedNode": "\\src\\app\\List\\machinery-master-list\\machinery-master-list.component.ts",
   "PreviewInSolutionExplorer": false
 }
