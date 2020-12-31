@@ -19,13 +19,17 @@ export class QRPopComponentComponent implements OnInit {
 
   ngOnInit() {
     this.values.push(this.value)
-    this.data = JSON.stringify(this.values);
+    this.data = JSON.stringify(this.value);
   }
   downloadQRCode() {
     html2canvas(this.screen.nativeElement).then(canvas => {
       this.canvas.nativeElement.src = canvas.toDataURL();
       this.downloadLink.nativeElement.href = canvas.toDataURL('image/png');
-      this.downloadLink.nativeElement.download = this.value.Motor_Name;
+      if (this.value.type == 'motor') {
+        this.downloadLink.nativeElement.download = this.value.Motor_Name;
+      } else {
+        this.downloadLink.nativeElement.download = this.value.Mac_Name;
+      }
       this.downloadLink.nativeElement.click();
     });
   }

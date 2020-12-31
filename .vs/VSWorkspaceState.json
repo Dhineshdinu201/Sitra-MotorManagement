@@ -3,9 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\List",
-    "\\src\\app\\List\\machinery-master-list"
+    "\\src\\app\\Common",
+    "\\src\\app\\Common\\qrpop-component",
+    "\\src\\app\\List\\motor-name-plate-list",
+    "\\src\\app\\Reports",
+    "\\src\\app\\Reports\\machine-based-report",
+    "\\src\\app\\Reports\\machine-based-report\\motor-wise-efficiency",
+    "\\src\\assets"
   ],
-  "SelectedNode": "\\src\\app\\List\\machinery-master-list\\machinery-master-list.component.ts",
+  "SelectedNode": "\\src\\app\\Common\\qrpop-component\\qrpop-component.component.ts",
   "PreviewInSolutionExplorer": false
 }
